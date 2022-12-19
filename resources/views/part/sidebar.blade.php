@@ -1,107 +1,162 @@
-<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
-        <div class="sidebar-brand-icon">
-            <img src="{{ asset('/img/logo.png') }}">
-        </div>
-        <div class="sidebar-brand-text mx-3">Universitas Sangga Buana</div>
-    </a>
-    <hr class="sidebar-divider my-0">
-    <li class="nav-item">
-        <a class="nav-link" href="/home">
-            <i class="fa-solid fa-house"></i>
-            <span>Home</span></a>
-    </li>
-    <hr class="sidebar-divider">
-    <div class="sidebar-heading">
-        Features
+<div class="sidebar">
+			<div class="sidebar-background"></div>
+			<div class="sidebar-wrapper scrollbar-inner">
+				<div class="sidebar-content">
+					<div class="user">
+						<div class="avatar-sm float-left mr-2">
+							<img src="{{ asset('/template/assets/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle">
+						</div>
+						<div class="info">
+							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+								<span>
+									{{ Auth::user()->name }}
+									<span class="user-level">Administrator</span>
+									<span class="caret"></span>
+								</span>
+							</a>
+							<div class="clearfix"></div>
 
-    </div>
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
-            aria-expanded="true" aria-controls="collapseBootstrap">
-            <i class="fa-solid fa-book"></i>
-            <span>Buku</span>
-        </a>
-        <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Buku</h6>
-                <a class="collapse-item" href="/buku">Lihat Semua Buku</a>
+							<div class="collapse in" id="collapseExample">
+								<ul class="nav">
+									<li>
+										<a href="#profile">
+											<span class="link-collapse">My Profile</span>
+										</a>
+									</li>
+									<li>
+										<a href="#edit">
+											<span class="link-collapse">Edit Profile</span>
+										</a>
+									</li>
+									<li>
+										<a href="#settings">
+											<span class="link-collapse">Settings</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<ul class="nav">
+						<li class="nav-item active">
+							<a href="index.html">
+								<i class="fas fa-home"></i>
+								<p>Dashboard</p>
+							</a>
+						</li>
+						<li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+							<h4 class="text-section">Menu</h4>
+						</li>
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#base">
+								<i class="fas fa-layer-group"></i>
+								<p>Pegawai</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="base">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="components/avatars.html">
+											<span class="sub-item">Lihat Semua Pegawai</span>
+										</a>
+									</li>
+									<li>
+										<a href="components/buttons.html">
+											<span class="sub-item">Tambah Data Pegawai</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#forms">
+								<i class="fas fa-pen-square"></i>
+								<p>Jabatan</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="forms">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="forms/forms.html">
+											<span class="sub-item">Lihat Jabatan</span>
+										</a>
+									</li>
+									<li>
+										<a href="forms/forms.html">
+											<span class="sub-item">Tambah Jabatan</span>
+										</a>
+									</li>
 
-
-                    <a class="collapse-item" href="/buku/create">Tambah Buku</a>
-
-            </div>
-        </div>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm"
-            aria-expanded="true" aria-controls="collapseForm">
-            <i class="fa-solid fa-book-open"></i>
-            <span>Kategori</span>
-        </a>
-        <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Kategori</h6>
-                <a class="collapse-item" href="/kategori">Lihat Kategori</a>
-
-
-                    <a class="collapse-item" href="/kategori/create">Tambah Kategori</a>
-
-
-            </div>
-        </div>
-    </li>
-
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable"
-                aria-expanded="true" aria-controls="collapseTable">
-                <i class="fa-solid fa-users"></i>
-                <span>Anggota</span>
-            </a>
-            <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Anggota</h6>
-                    <a class="collapse-item" href="/anggota">Lihat Anggota</a>
-                    <a class="collapse-item" href="/anggota/create">Tambah Anggota</a>
-                </div>
-            </div>
-        </li>
-
-
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePeminjam"
-                aria-expanded="true" aria-controls="collapsePeminjam">
-                <i class="fa-solid fa-user-pen"></i>
-                <span>Peminjaman</span>
-            </a>
-            <div id="collapsePeminjam" class="collapse" aria-labelledby="headingPeminjam"
-                data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Peminjaman</h6>
-                    <a class="collapse-item" href="/peminjaman">Riwayat Peminjaman</a>
-                    <a class="collapse-item" href="/peminjaman/create">Tambahkan Peminjaman</a>
-                    <a class="collapse-item" href="/pengembalian">Kembalikan Buku</a>
-                </div>
-            </div>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePeminjam"
-                aria-expanded="true" aria-controls="collapsePeminjam">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Pinjam Buku</span>
-            </a>
-            <div id="collapsePeminjam" class="collapse" aria-labelledby="headingPeminjam"
-                data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Pinjam Buku</h6>
-                    <a class="collapse-item" href="/peminjaman/create">Pinjam Buku</a>
-                    <a class="collapse-item" href="/peminjaman">Pinjaman Saya</a>
-                </div>
-            </div>
-        </li>
-
-
-</ul>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#tables">
+								<i class="fas fa-table"></i>
+								<p>Gaji</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="tables">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="tables/tables.html">
+											<span class="sub-item">Lihat Gaji Karyawan</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#maps">
+								<i class="fas fa-map-marker-alt"></i>
+								<p>Jadwal</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="maps">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="maps/googlemaps.html">
+											<span class="sub-item">Jadwal Karyawan</span>
+										</a>
+									</li>
+									<li>
+										<a href="maps/fullscreenmaps.html">
+											<span class="sub-item">Jadwal Cuti</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#custompages">
+								<i class="fas fa-paint-roller"></i>
+								<p>Absensi</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="custompages">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="login.html">
+											<span class="sub-item">Absen Masuk</span>
+										</a>
+									</li>
+									<li>
+										<a href="login2.html">
+											<span class="sub-item">Absen Keluar</span>
+										</a>
+									</li>
+									<li>
+										<a href="userprofile.html">
+											<span class="sub-item">Riwayat Absensi</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>

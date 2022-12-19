@@ -1,89 +1,87 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Azzara Bootstrap 4 Admin Dashboard</title>
+	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+	<link rel="icon" href="{{ asset('/template/assets/img/icon.ico') }}" type="image/x-icon"/>
 
-<html
-  lang="en"
-  class="light-style"
-  dir="ltr"
-  data-theme="theme-default"
-  data-template="vertical-menu-template-free"
->
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
+	<!-- Fonts and icons -->
+	<script src="{{ asset('/template/assets/js/plugin/webfont/webfont.min.js') }}"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Open+Sans:300,400,600,700"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"], urls: ['{{ asset('/template/assets/css/fonts.css') }}']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
 
-    <title>Blank layout - Layouts | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="{{ asset('/template/assets/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('/template/assets/css/azzara.min.css') }}">
 
-    <meta name="description" content="" />
+	<!-- CSS Just for demo purpose, don't include it in your project
+	<link rel="stylesheet" href="{{ asset('/template/assets/css/demo.css') }}"> -->
+</head>
+<body>
+	<div class="wrapper">
+		<!--
+				Tip 1: You can change the background color of the main header using: data-background-color="blue | purple | light-blue | green | orange | red"
+		-->
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('/template/assets/img/favicon/favicon.ico') }}" />
+			<!-- Navbar Header -->
+            @yield('navbar')
+			<!-- End Navbar -->
+		<!-- Sidebar -->
+            @yield('sidebar')
+		<!-- End Sidebar -->
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+		<div class="main-panel">
+			<div class="content">
+                @yield('content')
+			</div>
+		</div>
 
-    <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+	</div>
+	<!--   Core JS Files   -->
+	<script src="{{ asset('/template/assets/js/core/jquery.3.2.1.min.js') }}"></script>
+	<script src="{{ asset('/template/assets/js/core/popper.min.js') }}"></script>
+	<script src="{{ asset('/template/assets/js/core/bootstrap.min.js') }}"></script>
 
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="../assets/css/demo.css" />
+	<!-- jQuery UI -->
+	<script src="{{ asset('/template/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
+	<script src="{{ asset('/template/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script>
 
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+	<!-- jQuery Scrollbar -->
+	<script src="{{ asset('/template/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 
-    <!-- Page CSS -->
+	<!-- Moment JS -->
+	<script src="{{ asset('/template/assets/js/plugin/moment/moment.min.js') }}"></script>
 
-    <!-- Helpers -->
-    <script src="../assets/vendor/js/helpers.js"></script>
+	<!-- Chart JS -->
+	<script src="{{ asset('/template/assets/js/plugin/chart.js/chart.min.js') }}"></script>
 
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="../assets/js/config.js"></script>
-  </head>
+	<!-- jQuery Sparkline -->
+	<script src="{{ asset('/template/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
 
-  <body>
-    <!-- Content -->
+	<!-- Chart Circle -->
+	<script src="{{ asset('/template/assets/js/plugin/chart-circle/circles.min.js') }}"></script>
 
-    <h4 class="fw-bold p-4">Blank Page</h4>
+	<!-- Datatables -->
+	<script src="{{ asset('/template/assets/js/plugin/datatables/datatables.min.js') }}"></script>
 
-    <!-- / Content -->
+	<!-- Bootstrap Notify -->
+	<script src="{{ asset('/template/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 
-    <div class="buy-now">
-      <a
-        href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-        target="_blank"
-        class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
-      >
-    </div>
+	<!-- Bootstrap Toggle -->
+	<script src="{{ asset('/template/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js') }}"></script>
 
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../assets/vendor/js/bootstrap.js"></script>
-    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+	<!-- Sweet Alert -->
+	<script src="{{ asset('/template/assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
 
-    <script src="../assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-
-    <!-- Main JS -->
-    <script src="../assets/js/main.js"></script>
-
-    <!-- Page JS -->
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </body>
+	<!-- Azzara JS -->
+	<script src="{{ asset('/template/assets/js/ready.min.js') }}"></script>
+</body>
 </html>

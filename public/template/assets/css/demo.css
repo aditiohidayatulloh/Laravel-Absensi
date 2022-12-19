@@ -1,107 +1,272 @@
-/*
-* demo.css
-* File include item demo only specific css only
-******************************************************************************/
-
-.menu .app-brand.demo {
-  height: 64px;
-  margin-top: 12px;
+.custom-template {
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+	right: -325px;
+	width: 325px;
+	height: max-content;
+	display: block;
+	z-index: 1;
+	background: #ffffff;
+	transition: all .3s;
+	z-index: 1003;
+	box-shadow: -1px 1px 20px rgba(69, 65, 78, 0.15);
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	transition: all .5s;
 }
 
-.app-brand-logo.demo svg {
-  width: 22px;
-  height: 38px;
+.custom-template.open {
+	right: 0px;
 }
 
-.app-brand-text.demo {
-  font-size: 1.75rem;
-  letter-spacing: -0.5px;
-  text-transform: lowercase;
+.custom-template .custom-toggle {
+	position: absolute;
+	width: 45px;
+	height: 45px;
+	background: rgb(88, 103, 221);
+	top: 50%;
+	left: -45px;
+	transform: translateY(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-right: 1px solid #177dff;
+	cursor: pointer;
+	color: #ffffff;
+	box-shadow: -5px 5px 20px rgba(69, 65, 78, 0.21);
 }
 
-/* ! For .layout-navbar-fixed added fix padding top tpo .layout-page */
-/* Detached navbar */
-.layout-navbar-fixed .layout-wrapper:not(.layout-horizontal):not(.layout-without-menu) .layout-page {
-  padding-top: 76px !important;
-}
-/* Default navbar */
-.layout-navbar-fixed .layout-wrapper:not(.layout-without-menu) .layout-page {
-  padding-top: 64px !important;
+.custom-template .custom-toggle i {
+	font-size: 20px;
+	animation: 1.3s spin linear infinite;
 }
 
-/* Navbar page z-index issue solution */
-.content-wrapper .navbar {
-  z-index: auto;
+.custom-template .title{
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    border-top-left-radius: 5px;
+    border-bottom: 1px solid #ebedf2;
+    background: #5867dd;
 }
 
-/*
-* Content
-******************************************************************************/
-
-.demo-blocks > * {
-  display: block !important;
+.custom-template .custom-content{
+	padding: 20px 15px;
+	overflow: auto;
 }
 
-.demo-inline-spacing > * {
-  margin: 1rem 0.375rem 0 0 !important;
+.custom-template .switcher {
+	padding: 5px 0;
 }
 
-/* ? .demo-vertical-spacing class is used to have vertical margins between elements. To remove margin-top from the first-child, use .demo-only-element class with .demo-vertical-spacing class. For example, we have used this class in forms-input-groups.html file. */
-.demo-vertical-spacing > * {
-  margin-top: 1rem !important;
-  margin-bottom: 0 !important;
-}
-.demo-vertical-spacing.demo-only-element > :first-child {
-  margin-top: 0 !important;
-}
-
-.demo-vertical-spacing-lg > * {
-  margin-top: 1.875rem !important;
-  margin-bottom: 0 !important;
-}
-.demo-vertical-spacing-lg.demo-only-element > :first-child {
-  margin-top: 0 !important;
+.custom-template .switch-block h4 {
+	font-size: 13px;
+	font-weight: 600;
+	color: #444;
+	line-height: 1.3;
+	margin-bottom: 0;
+	text-transform: uppercase;
 }
 
-.demo-vertical-spacing-xl > * {
-  margin-top: 5rem !important;
-  margin-bottom: 0 !important;
-}
-.demo-vertical-spacing-xl.demo-only-element > :first-child {
-  margin-top: 0 !important;
+.custom-template .btnSwitch {
+	margin-top: 20px;
+	margin-bottom: 25px;
 }
 
-.rtl-only {
-  display: none !important;
-  text-align: left !important;
-  direction: ltr !important;
+.custom-template .btnSwitch button {
+	border: 0px;
+	height: 20px;
+	width: 20px;
+	outline: 0;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	cursor: pointer;
+	padding: 0;
+	border-radius: 50%;
+	border: 2px solid #eee;
+	position: relative;
+	transition: all .2s;
 }
 
-[dir='rtl'] .rtl-only {
-  display: block !important;
+.custom-template .btnSwitch button:hover{
+	border-color: #0bf;
 }
 
-/*
-* Layout demo
-******************************************************************************/
+.custom-template .btnSwitch button.selected{
+	border-color: #0bf;
+}
 
-.layout-demo-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-top: 1rem;
+.custom-template .img-pick {
+	padding: 4px;
+	min-height: 100px;
+	border-radius: 5px;
+	cursor: pointer;
 }
-.layout-demo-placeholder img {
-  width: 900px;
+
+.custom-template .img-pick img {
+	height: 100%;
+	height: 100px;
+	width: 100%;
+	border-radius: 5px;
+	border: 2px solid transparent;
 }
-.layout-demo-info {
-  text-align: center;
-  margin-top: 1rem;
+
+.custom-template .img-pick:hover img, .custom-template .img-pick.active img{
+	border-color: #177dff;
+}
+
+.demo .btn, .demo .progress{
+	margin-bottom: 15px !important;
+}
+
+.demo .form-check-label, .demo .form-radio-label{
+	margin-right: 15px;
+}
+
+.demo .toggle, .demo .btn-group{
+	margin-right: 15px;
+}
+
+.demo #slider{
+	margin-bottom: 15px;
+}
+
+.table-typo tbody > tr > td{
+	border-color: #fafafa;
+}
+
+.table-typo tbody > tr > td:first-child{
+	min-width: 200px;
+	vertical-align: bottom;
+}
+
+.table-typo tbody > tr > td:first-child p{
+	font-size: 14px;
+	color: #333;
+}
+
+.demo-icon {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 20px;
+	padding: 10px;
+	transition: all .2s;
+}
+
+.demo-icon:hover{
+	background-color: #f4f5f8;
+	border-radius: 3px;
+}
+
+.demo-icon .icon-preview{
+	font-size: 1.8rem;
+	margin-right: 10px;
+	line-height: 1;
+	color: #333439;
+}
+
+.demo-icon .icon-class{
+	font-weight: 300;
+	font-size: 13px;
+	color: #777;
+}
+
+.form-show-notify .form-control{
+	margin-bottom: 15px;
+}
+
+.form-show-notify label{
+	padding-top: 0.65rem;
+}
+
+.map-demo {
+	height: 300px;
+}
+
+#instructions li{
+	padding: 5px 0;
+}
+
+.row-demo-grid{
+	margin-bottom: 15px;
+}
+
+.row-demo-grid [class^="col"]{
+	text-align: center;
+}
+
+.row-demo-grid [class^="col"] .card-body{
+	background: #ddd;
+}
+
+.btnSwitch button[data-color="default"] {
+	background-color: #fff;
+}
+.btnSwitch button[data-color="black"] {
+	background-color: #191919;
+}
+.btnSwitch button[data-color="dark"] {
+	background-color: #282a3c;
+}
+.btnSwitch button[data-color="blue"] {
+	background-color: #177dff;
+}
+.btnSwitch button[data-color="purple"] {
+	background-color: #716aca;
+}
+.btnSwitch button[data-color="light-blue"] {
+	background-color: #05b4d8;
+}
+.btnSwitch button[data-color="green"] {
+	background-color: #35cd3a;
+}
+.btnSwitch button[data-color="orange"] {
+	background-color: #ffa534;
+}
+.btnSwitch button[data-color="red"] {
+	background-color: #f3545d;
+}
+.btnSwitch button[data-color="bg1"] {
+	background-color: #fafafa;
+}
+.btnSwitch button[data-color="bg2"] {
+	background-color: #fff;
+}
+.btnSwitch button[data-color="bg3"] {
+	background-color: #f1f1f1;
+}
+
+@media screen and (max-width: 550px){
+	.table-typo tr td{
+		display: flex;
+		align-items: center;
+		word-break: break-word;
+	}
+
+	.table-typo tr td:first-child p{
+		margin-bottom: 0px;
+	}
+}
+
+@media screen and (max-width: 576px){
+	.custom-template .custom-content {
+		overflow: auto;
+	}
+	.form-show-notify > .text-right, .form-show-validation > .text-right {
+		text-align: left !important;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.custom-template {
+		width: 85% !important;
+		right: -85%;
+	}
 }
