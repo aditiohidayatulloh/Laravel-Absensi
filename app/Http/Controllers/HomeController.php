@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $iduser = Auth::id();
+        $profile = Profile::where('users_id',$iduser)->first();
+        return view('dashboard',['profile'=>$profile]);
     }
 }

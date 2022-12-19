@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Azzara Bootstrap 4 Admin Dashboard</title>
+	<title>Sistem Informasi Pegawai</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="{{ asset('/template/assets/img/icon.ico') }}" type="image/x-icon"/>
+	<link rel="icon" href="{{ asset('/img/logo.png') }}" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<!-- Fonts and icons -->
 	<script src="{{ asset('/template/assets/js/plugin/webfont/webfont.min.js') }}"></script>
@@ -21,6 +24,7 @@
 	<!-- CSS Files -->
 	<link rel="stylesheet" href="{{ asset('/template/assets/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('/template/assets/css/azzara.min.css') }}">
+    @stack('styles')
 
 	<!-- CSS Just for demo purpose, don't include it in your project
 	<link rel="stylesheet" href="{{ asset('/template/assets/css/demo.css') }}"> -->
@@ -83,5 +87,7 @@
 
 	<!-- Azzara JS -->
 	<script src="{{ asset('/template/assets/js/ready.min.js') }}"></script>
+
+    @stack('scripts')
 </body>
 </html>

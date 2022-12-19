@@ -4,7 +4,11 @@
 				<div class="sidebar-content">
 					<div class="user">
 						<div class="avatar-sm float-left mr-2">
-							<img src="{{ asset('/template/assets/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle">
+							  @if ($profile->profile_picture === null)
+									<img src="{{ asset('/template/img/boy.jpg') }}" alt="..." class="avatar-img rounded-circle">
+                                    @else
+                                    <img src="{{asset('/images/profile_picture/'.$profile->photoProfile)}}" alt="..." class="avatar-img rounded-circle">
+                                    @endif
 						</div>
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -38,8 +42,8 @@
 						</div>
 					</div>
 					<ul class="nav">
-						<li class="nav-item active">
-							<a href="index.html">
+						<li class="nav-item">
+							<a href="/home">
 								<i class="fas fa-home"></i>
 								<p>Dashboard</p>
 							</a>
@@ -52,14 +56,14 @@
 						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#base">
-								<i class="fas fa-layer-group"></i>
+                            <i class="fa-solid fa-users"></i>
 								<p>Pegawai</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="components/avatars.html">
+										<a href="/employee">
 											<span class="sub-item">Lihat Semua Pegawai</span>
 										</a>
 									</li>
@@ -73,7 +77,7 @@
 						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#forms">
-								<i class="fas fa-pen-square"></i>
+                            <i class="fa-solid fa-chalkboard-user"></i>
 								<p>Jabatan</p>
 								<span class="caret"></span>
 							</a>
@@ -95,7 +99,7 @@
 						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#tables">
-								<i class="fas fa-table"></i>
+							<i class="fa-solid fa-money-bill-wave"></i>
 								<p>Gaji</p>
 								<span class="caret"></span>
 							</a>
@@ -111,7 +115,7 @@
 						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#maps">
-								<i class="fas fa-map-marker-alt"></i>
+                            <i class="fa-regular fa-calendar-days"></i>
 								<p>Jadwal</p>
 								<span class="caret"></span>
 							</a>
@@ -132,7 +136,7 @@
 						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#custompages">
-								<i class="fas fa-paint-roller"></i>
+                            <i class="fa-regular fa-calendar"></i>
 								<p>Absensi</p>
 								<span class="caret"></span>
 							</a>
