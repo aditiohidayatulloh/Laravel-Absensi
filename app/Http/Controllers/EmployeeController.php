@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Profile;
 use App\Models\Employee;
+use App\Models\Position;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Console\View\Components\Alert;
+use Symfony\Component\HttpFoundation\File\File;
 
 class EmployeeController extends Controller
 {
@@ -22,8 +24,10 @@ class EmployeeController extends Controller
     {
         $iduser = Auth::id();
         $employee = User::all();
+        $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
-        return view('employee.index',['employee'=>$employee,'profile'=>$profile]);
+        $user_position = Position::where('id',$user_level)->first();
+        return view('employee.index',['employee'=>$employee,'profile'=>$profile,'user_position'=>$user_position]);
     }
 
     /**
@@ -34,9 +38,11 @@ class EmployeeController extends Controller
     public function create()
     {
         $iduser = Auth::id();
-        $employee = User::all();
         $profile = Profile::where('users_id',$iduser)->first();
-        return view('employee.create',['employee'=>$employee,'profile'=>$profile]);
+        $user_level = Auth::user()->position_id;
+        $user_position = Position::where('id',$user_level)->first();
+        $position = Position::all();
+        return view('employee.create',['profile'=>$profile,'user_position'=>$user_position,'position'=>$position]);
     }
 
     /**
@@ -51,6 +57,7 @@ class EmployeeController extends Controller
         $request->validate([
             'name'=> 'required',
             'employee_code'=> 'required|unique:profile',
+            'position'=> 'required',
             'gender'=> 'required',
             'address'=> 'required',
             'phone_number'=> 'required',
@@ -61,6 +68,7 @@ class EmployeeController extends Controller
             'name.required'=>"Nama tidak boleh kosong",
             'employee_code.required'=>"Nomor Induk tidak boleh kosong",
             'employee_code.unique'=>"Kode Telah Telah Ada",
+            'gender.required'=>"Posisi tidak boleh kosong",
             'gender.required'=>"gender tidak boleh kosong",
             'address.required'=>"address tidak boleh kosong",
             'phone_number.required'=>"Nomor Telepon tidak boleh kosong",
@@ -69,11 +77,12 @@ class EmployeeController extends Controller
             'password.min'=>"Password tidak boleh kurang dari 8 karakter"
         ]);
 
-        dd($request->all());
+        // dd($request->all());
         $user = User::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'position_id' =>$request['position']
         ]);
 
         Profile::create([
@@ -111,7 +120,9 @@ class EmployeeController extends Controller
     {
         $employee = User::find($id);
         $profile = Profile::where('users_id',$id)->first();
-        return view('employee.edit',['employee'=>$employee,'profile'=>$profile]);
+        $user_level = Auth::user()->position_id;
+        $user_position = Position::where('id',$user_level)->first();
+        return view('employee.edit',['employee'=>$employee,'profile'=>$profile,'user_position'=>$user_position]);
     }
 
     /**
@@ -173,16 +184,16 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy($id)
     {
         $user = User::find($id);
 
         $user->delete();
 
         // Alert::success('Berhasil', 'Berhasil Mengapus Anggota');
-        return redirect('employee');
+        return redirect('/employee');
     }
 }

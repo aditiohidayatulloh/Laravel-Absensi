@@ -2,26 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use App\Models\Profile;
+use App\Models\Position;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\User;
+
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
-use File;
 class ProfileController extends Controller
 {
     public function index(){
         $iduser = Auth::id();
         $profile = Profile::where('users_id',$iduser)->first();
-        return view('profile.index',['profile'=>$profile]);
+        $user_level = Auth::user()->position_id;
+        $user_position = Position::where('id',$user_level)->first();
+        return view('profile.index',['profile'=>$profile,'user_position'=>$user_position]);
     }
 
     public function edit(){
         $iduser = Auth::id();
         $profile = Profile::where('users_id',$iduser)->first();
-        return view('profile.edit',['profile'=>$profile]);
+        $user_level = Auth::user()->position_id;
+        $user_position = Position::where('id',$user_level)->first();
+        return view('profile.edit',['profile'=>$profile,'user_position'=>$user_position]);
     }
 
     public function update(request $request, $id){

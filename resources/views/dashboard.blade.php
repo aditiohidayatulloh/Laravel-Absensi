@@ -23,8 +23,8 @@
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Visitors</p>
-                                <h4 class="card-title">1,294</h4>
+                                <p class="card-category">Karyawan</p>
+                                <h4 class="card-title">{{ $employee_count }}</h4>
                             </div>
                         </div>
                     </div>
@@ -42,8 +42,8 @@
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Subscribers</p>
-                                <h4 class="card-title">1303</h4>
+                                <p class="card-category">Jabatan</p>
+                                <h4 class="card-title">{{ $position_count }}</h4>
                             </div>
                         </div>
                     </div>

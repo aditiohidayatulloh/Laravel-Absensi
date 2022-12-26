@@ -33,8 +33,27 @@
         @enderror
 
         <div class="form-group mx-4 my-2">
+            <label for="employee_code" class="text-md text-primary font-weight-bold">Posisi atau Jabatan</label>
+            <select name="position" id="position" class="form-control">
+            <option value="">Pilih Jabatan</option>
+            @foreach ($position as $item )
+            <option value="{{ $item->id }}">{{ $item->position_name }}</option>
+            @endforeach
+
+            </select>
+        </div>
+
+        @error('position')
+        <div class="alert-danger mx-4 px-2 py-2"> {{ $message }}</div>
+        @enderror
+
+        <div class="form-group mx-4 my-2">
             <label for="gender" class="text-md text-primary font-weight-bold">Jenis Kelamin</label>
-            <input type="text" id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}">
+            <select name="gender" id="gender" class="form-control @error('gender') is-invalid @enderror">
+                <option value="">Pilih Jenis Kelamin</option>
+                <option value="Laki-Laki">Laki-Laki</option>
+                <option value="Perempuan">Perempuan</option>
+            </select>
         </div>
 
         @error('gender')
@@ -42,7 +61,7 @@
         @enderror
 
         <div class="form-group mx-4 my-2">
-            <label for="address" class="text-md text-primary font-weight-bold">address</label>
+            <label for="address" class="text-md text-primary font-weight-bold">Alamat</label>
             <input type="text" id="address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}">
         </div>
 
@@ -80,7 +99,7 @@
 
         <div class="button-save d-flex justify-content-end">
             <a href="/employee" class="btn btn-danger mt-4 py-1 px-4">Batal</a>
-            <button type="submit" class="btn btn-primary mt-4 mx-4 px-5 py-1">Simpan</button>
+            <button type="submit" class="btn btn-primary mt-4 mx-2 px-5 py-1">Simpan</button>
         </form>
         </div>
     </div>

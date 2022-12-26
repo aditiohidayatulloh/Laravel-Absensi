@@ -14,7 +14,7 @@
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
 									{{ Auth::user()->name }}
-									<span class="user-level">Administrator</span>
+									<span class="user-level">{{$user_position->position_name}}</span>
 									<span class="caret"></span>
 								</span>
 							</a>
@@ -23,12 +23,12 @@
 							<div class="collapse in" id="collapseExample">
 								<ul class="nav">
 									<li>
-										<a href="#profile">
+										<a href="/profile">
 											<span class="link-collapse">My Profile</span>
 										</a>
 									</li>
 									<li>
-										<a href="#edit">
+										<a href="/profile/{{ $profile->id }}/edit">
 											<span class="link-collapse">Edit Profile</span>
 										</a>
 									</li>
