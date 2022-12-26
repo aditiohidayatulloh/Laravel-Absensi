@@ -8,6 +8,8 @@ use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Console\View\Components\Alert;
 
 class EmployeeController extends Controller
 {
@@ -45,7 +47,45 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'name'=> 'required',
+            'employee_code'=> 'required|unique:profile',
+            'gender'=> 'required',
+            'address'=> 'required',
+            'phone_number'=> 'required',
+            'email'=>'required|unique:users',
+            'password'=>'|min:8',
+        ],
+        [
+            'name.required'=>"Nama tidak boleh kosong",
+            'employee_code.required'=>"Nomor Induk tidak boleh kosong",
+            'employee_code.unique'=>"Kode Telah Telah Ada",
+            'gender.required'=>"gender tidak boleh kosong",
+            'address.required'=>"address tidak boleh kosong",
+            'phone_number.required'=>"Nomor Telepon tidak boleh kosong",
+            'email.required'=>"Email tidak boleh kosong",
+            'email.unique'=>"Email Telah Digunakan",
+            'password.min'=>"Password tidak boleh kurang dari 8 karakter"
+        ]);
+
+        dd($request->all());
+        $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+
+        Profile::create([
+            'employee_code'=>$request['employee_code'],
+            'gender'=>$request['gender'],
+            'address'=>$request['address'],
+            'phone_number'=>$request['phone_number'],
+            'users_id'=>$user->id,
+        ]);
+
+        // Alert::success('Success', 'Berhasil Menambah Anggota');
+        return redirect('/anggota');
     }
 
     /**
@@ -83,7 +123,51 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+
+        $request->validate([
+            'name'=> 'required',
+            'employee_code'=> 'required',
+            'gender'=> 'required',
+            'address'=> 'required',
+            'phone_number'=> 'required',
+            'profile_picture'=> 'nullable|mimes:jpg,jpeg,png|max:2048'
+        ],
+        [
+            'name.required'=>"Nama tidak boleh kosong",
+            'employee_code.required'=>"Nomor Induk tidak boleh kosong",
+            'gender.required'=>"gender tidak boleh kosong",
+            'address.required'=>"address tidak boleh kosong",
+            'phone_number.required'=>"Nomor Telepon tidak boleh kosong",
+            'profile_picture.mimes' =>"Foto Profile Harus Berupa jpg,jpeg,atau png",
+            'profile_picture.max' => "ukuran gambar tidak boleh lebih dari 2048 MB"
+        ]);
+        $user = User::find($id);
+        $profile = Profile::find($id);
+
+        if($request->has('profile_picture')){
+         $path='images/photoProifle';
+
+         File::delete($path.$profile->profile_picture);
+
+         $namaGambar = time().'.'.$request->profile_picture->extension();
+
+         $request->profile_picture->move(public_path('images/profile_picture'),$namaGambar);
+
+         $profile->profile_picture =$namaGambar;
+
+         $profile->save();
+        }
+        $user->name = $request->name;
+        $profile->employee_code = $request->employee_code;
+        $profile->gender = $request->gender;
+        $profile->address = $request->address;
+        $profile->phone_number = $request->phone_number;
+
+        $profile->save();
+        $user->save();
+
+        // Alert::success('Success', 'Berhasil Mengubah Profile');
+        return redirect('/employee');
     }
 
     /**
@@ -94,6 +178,11 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $user = User::find($id);
+
+        $user->delete();
+
+        // Alert::success('Berhasil', 'Berhasil Mengapus Anggota');
+        return redirect('employee');
     }
 }

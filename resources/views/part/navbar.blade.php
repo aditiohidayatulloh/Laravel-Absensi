@@ -25,7 +25,7 @@
                                     @if ($profile->profile_picture === null)
 									<img src="{{ asset('/template/img/boy.jpg') }}" alt="..." class="avatar-img rounded-circle">
                                     @else
-                                    <img src="{{asset('/images/profile_picture/'.$profile->photoProfile)}}" alt="..." class="avatar-img rounded-circle">
+                                    <img src="{{asset('/images/profile_picture/'.$profile->profile_picture)}}" alt="..." class="avatar-img rounded-circle">
                                     @endif
                                 </div>
 							</a>
@@ -33,7 +33,7 @@
 								<li>
 									<div class="user-box">
                                     @if ($profile->profile_picture != null )
-                                    <img  class="img-profile rounded-circle" src="{{asset('/images/photoProfile/'.$profile->photoProfile)}}" style="max-width: 60px">
+                                    <img  class="img-profile rounded-circle" src="{{asset('/images/profile_picture/'.$profile->profile_picture)}}" style="max-width: 60px">
                                     @else
                                     <img class="img-profile rounded-circle" src="{{ asset('template/img/boy.jpg') }}" style="max-width: 60px">
                                     @endif

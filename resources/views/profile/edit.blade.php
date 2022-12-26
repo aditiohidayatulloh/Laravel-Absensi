@@ -16,61 +16,50 @@
         @csrf
         @method('put')
 
-        <div class="card mx-3 my-2">
+        <div class="card mx-3 my-4 py-2">
             <div class="form-group mx-4">
                 <label for="nama" class="text-md text-primary font-weight-bold mt-2">Nama Lengkap</label>
-                <input type="text" name="name" class="form-control" value="{{ old('name', $profile->user->name) }}">
+                <input type="text" name="name" class="form-control" value="{{ old('name', $profile->user->name) }}" disabled>
             </div>
-
-            @error('name')
-                <div class="alert-danger"> {{ $message }}</div>
-            @enderror
 
             <div class="form-group mx-4">
                 <label for="npm" class="text-md text-primary font-weight-bold">Nomor Pegawai</label>
-                <input type="text" name="npm" class="form-control" value="{{ old('npm', $profile->employee_code) }}">
+                <input type="text" name="npm" class="form-control" value="{{ old('npm', $profile->employee_code) }}" disabled>
             </div>
-
-            @error('npm')
-                <div class="alert-danger"> {{ $message }}</div>
-            @enderror
 
             <div class="form-group mx-4">
                 <label for="nama" class="text-md text-primary font-weight-bold">Jenis Kelamin</label>
-                <input type="text" name="prodi"class="form-control" value="{{ old('prodi', $profile->gender) }}">
+                <input type="text" name="prodi"class="form-control" value="{{ old('prodi', $profile->gender) }}" disabled>
             </div>
 
-            @error('prodi')
-                <div class="alert-danger mx-2"> {{ $message }}</div>
-            @enderror
 
             <div class="form-group mx-4">
                 <label for="nama" class="text-md text-primary font-weight-bold">Alamat</label>
-                <input type="text" name="alamat"class="form-control" value="{{ old('alamat', $profile->address) }}">
+                <input type="text" name="address"class="form-control" value="{{ old('address', $profile->address) }}">
             </div>
 
-            @error('alamat')
-                <div class="alert-danger"> {{ $message }}</div>
+            @error('address')
+                <div class="alert-danger mx-4 py-2"> {{ $message }}</div>
             @enderror
 
             <div class="form-group mx-4">
                 <label for="nama" class="text-md text-primary font-weight-bold">Nomor Telepon</label>
-                <input type="text" name="noTelp" class="form-control" value="{{ old('noTelp', $profile->phone_number) }}">
+                <input type="text" name="phone_number" class="form-control" value="{{ old('phone_number', $profile->phone_number) }}">
             </div>
 
-            @error('noTelp')
-                <div class="alert-danger"> {{ $message }}</div>
+            @error('phone_number')
+                <div class="alert-danger mx-2 py-2"> {{ $message }}</div>
             @enderror
 
             <div class="form-group mx-4">
-                <label for="photoProfile" class="text-md text-primary font-weight-bold">Tambah Photo Profile</label>
+                <label for="profile_picture" class="text-md text-primary font-weight-bold">Tambah Photo Profile</label>
                 <div class="custom-file">
-                    <input type="file" name="photoProfile" id="photoProfile"
-                        value="{{ old('photoProfile', $profile->photoProfile) }}">
+                    <input type="file" name="profile_picture" id="profile_picture"
+                        value="{{ old('profile_picture', $profile->profile_picture) }}">
                 </div>
             </div>
 
-            @error('photoProfile')
+            @error('profile_picture')
                 <div class="alert-danger"> {{ $message }}</div>
             @enderror
 

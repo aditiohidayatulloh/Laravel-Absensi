@@ -9,14 +9,14 @@
 @endsection
 
 @section('content')
-    <div class="card">
+    <div class="card mx-3 my-3">
         <div class="card-header py-3">
             <h1 class="font-weight-bold text-primary">My Profile</h1>
         </div>
         <div class="row">
             <div class="col-auto ml-5 mr-5 my-4">
                 @if ($profile->profile_picture != null)
-                    <img src="{{ asset('/images/photoProfile/' . $profile->photoProfile) }}"
+                    <img src="{{ asset('/images/profile_picture/' . $profile->profile_picture) }}"
                         style="width:150px;height:150px;border-radius:100px">
                 @else
                     <img src="{{ asset('template/img/boy.jpg') }}" style="width:100px;height:100px;border-radius:50px">

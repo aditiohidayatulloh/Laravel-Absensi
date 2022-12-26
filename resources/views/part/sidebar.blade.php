@@ -7,7 +7,7 @@
 							  @if ($profile->profile_picture === null)
 									<img src="{{ asset('/template/img/boy.jpg') }}" alt="..." class="avatar-img rounded-circle">
                                     @else
-                                    <img src="{{asset('/images/profile_picture/'.$profile->photoProfile)}}" alt="..." class="avatar-img rounded-circle">
+                                    <img src="{{asset('/images/profile_picture/'.$profile->profile_picture)}}" alt="..." class="avatar-img rounded-circle">
                                     @endif
 						</div>
 						<div class="info">

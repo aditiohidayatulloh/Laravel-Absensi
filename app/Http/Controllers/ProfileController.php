@@ -26,17 +26,11 @@ class ProfileController extends Controller
 
     public function update(request $request, $id){
         $request->validate([
-            'name'=> 'required',
-            'employee_code'=> 'required',
-            'gender'=> 'required',
             'address'=> 'required',
             'phone_number'=> 'required',
             'profile_picture'=> 'nullable|mimes:jpg,jpeg,png|max:2048'
         ],
         [
-            'name.required'=>"Nama tidak boleh kosong",
-            'employee_code.required'=>"Nomor Induk tidak boleh kosong",
-            'gender.required'=>"Prodi tidak boleh kosong",
             'address.required'=>"address tidak boleh kosong",
             'phone_number.required'=>"Nomor Telepon tidak boleh kosong",
             'profile_picture.mimes' =>"Foto Profile Harus Berupa jpg,jpeg,atau png",
@@ -46,29 +40,26 @@ class ProfileController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user = User::where('id',$iduser)->first();
 
-        if($request->has('photoProfile')){
+        if($request->has('profile_picture')){
          $path='images/photoProifle';
 
-         File::delete($path.$profile->photoProfile);
+         File::delete($path.$profile->profile_picture);
 
-         $namaGambar = time().'.'.$request->photoProfile->extension();
+         $namaGambar = time().'.'.$request->profile_picture->extension();
 
-         $request->photoProfile->move(public_path('images/photoProfile'),$namaGambar);
+         $request->profile_picture->move(public_path('images/profile_picture'),$namaGambar);
 
-         $profile->photoProfile =$namaGambar;
+         $profile->profile_picture =$namaGambar;
 
          $profile->save();
         }
-        $user->name = $request->name;
-        $profile->npm = $request->npm;
-        $profile->prodi = $request->prodi;
-        $profile->alamat = $request->alamat;
-        $profile->noTelp = $request->noTelp;
+        $profile->address = $request->address;
+        $profile->phone_number = $request->phone_number;
 
         $profile->save();
         $user->save();
 
-        Alert::success('Success', 'Berhasil Mengubah Profile');
+        // Alert::success('Success', 'Berhasil Mengubah Profile');
         return redirect('/profile');
     }
 
