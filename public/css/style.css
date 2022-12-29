@@ -1,17 +1,17 @@
-@import url(//fonts.googleapis.com/css?family=Lato:300:400);
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto&display=swap');
 
 body {
   margin:0;
 }
 
 h1 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Merriweather', serif;
   font-weight:300;
   letter-spacing: 2px;
   font-size:48px;
 }
 p {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Merriweather', serif;
   letter-spacing: 1px;
   font-size:14px;
   color: #333333;
@@ -44,7 +44,6 @@ p {
     background-color: rgb(46, 210, 255);
     color: #333333;
     font-size: 2rem;
-    font-family:'Times New Roman', Times, serif;
 }
 .auth a{
     padding: .5rem 2rem;
@@ -65,18 +64,35 @@ p {
   max-height:150px;
 }
 
-.content {
-  position:relative;
-  height:20vh;
-  text-align:center;
-  background-color:#333333;
-}
-label{
+.col label{
+    width: 100%;
+    margin: .2rem;
+    font-size: 1.3rem;
+    text-align: start;
+    pointer-events: none;
     color:#333333;
-    margin-bottom: .5rem;
-    font-size: 1.2rem;
+}
+
+.col input {
+    width:100%;
+    margin:0;
+    font-size: 1.3rem;
+    border: none;
+    border-bottom: .2rem solid rgba(47,222,255,0.64);
+    background:rgba(255, 255, 255, 0.5);
+    outline: none;
+}
+.col a{
+    font-size: 1rem;
+    margin: .5rem;
+    padding: 0;
+    color: #333333;
+}
+.col a:hover{
+    color:rgb(46, 210, 255) ;
 }
 .button {
+    width: 100%;
     color: #333333;
     background-color: rgb(46, 210, 255);
     border: none;

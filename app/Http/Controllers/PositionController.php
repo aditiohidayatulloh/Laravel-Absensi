@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
+use App\Models\Position;
 use App\Models\Posisition;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
-class PosisitionController extends Controller
+class PositionController extends Controller
 {
     /**
      * Display a listing of the resource.

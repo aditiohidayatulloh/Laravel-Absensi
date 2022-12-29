@@ -17,29 +17,28 @@
                             <div class="card-body">
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
-                                    <div class="row mb-3">
-                                        <label for="email">{{ __('Email Address') }}</label>
-
+                                    <div class="row mb-2">
+                                        <label for="email">{{ __('Email Address :') }}</label>
                                         <div class="col">
                                             <input id="email" type="email"
-                                                class="form-control @error('email') is-invalid @enderror" name="email"
-                                                value="{{ old('email') }}" required
-                                                autocomplete="email" autofocus>
+                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                            value="{{ old('email') }}" required
+                                            autocomplete="email" autofocus>
 
                                             @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                             @enderror
                                         </div>
                                     </div>
 
-                                    <div class="row mb-2">
+                                    <div class="row">
+                                        <label for="password">{{ __('Password :') }}</label>
                                         <div class="col">
-                                            <label for="password">{{ __('Password') }}</label>
                                             <input id="password" type="password"
                                                 class="form-control @error('password') is-invalid @enderror"
-                                                name="password" required autocomplete="current-password">
+                                                name="password" required autocomplete="password">
 
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -49,7 +48,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col mb-3 p-0">
+                                    <div class="col mb-4 text-start" style="width: 100%">
                                         <a href="#" class="text-decoration-none">Lupa Password ?</a>
                                     </div>
 

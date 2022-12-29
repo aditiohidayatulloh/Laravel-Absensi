@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PositionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,8 @@ Route::get('/', function () {
 Route::resource('profile', ProfileController::class)->only('index','update','edit');
 
 Route::resource('employee', EmployeeController::class);
+
+Route::resource('position', PositionController::class);
 
 Auth::routes();
 
