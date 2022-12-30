@@ -29,6 +29,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="name" class="text-lg text-primary font-weight-bold">Posisi</label>
+                    <h4>{{ $user_position->position_name }}</h4>
+                </div>
+
+                <div class="form-group">
                     <label for="emlpolyee" class="text-lg text-primary font-weight-bold">Kode Pegawai</label>
                     <h4>{{ $profile->employee_code }}</h4>
                 </div>

@@ -23,6 +23,11 @@
             </div>
 
             <div class="form-group mx-4">
+                <label for="nama" class="text-md text-primary font-weight-bold mt-2">Posisi</label>
+                <input type="text" name="name" class="form-control" value="{{ old('name', $user_position->position_name) }}" disabled>
+            </div>
+
+            <div class="form-group mx-4">
                 <label for="npm" class="text-md text-primary font-weight-bold">Nomor Pegawai</label>
                 <input type="text" name="npm" class="form-control" value="{{ old('npm', $profile->employee_code) }}" disabled>
             </div>

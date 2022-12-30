@@ -68,7 +68,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="components/buttons.html">
+										<a href="/employee/create">
 											<span class="sub-item">Tambah Data Pegawai</span>
 										</a>
 									</li>

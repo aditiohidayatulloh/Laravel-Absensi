@@ -19,6 +19,7 @@ class ProfileController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_level = Auth::user()->position_id;
         $user_position = Position::where('id',$user_level)->first();
+        // dd($user_position);
         return view('profile.index',['profile'=>$profile,'user_position'=>$user_position]);
     }
 
