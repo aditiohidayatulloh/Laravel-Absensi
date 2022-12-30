@@ -4,8 +4,6 @@
 <h4>A2-2113201044</h4>
 <h4>Teknik Informatika Universitas Sangga Buana YPKP</h4>
 
-
-
 # Library yang digunakan :
 <ul>
 <li>Laravel UI</li>
@@ -36,7 +34,6 @@
 <img src="/public/img/erd.png">
 
 # Link Youtube : 
-https://youtu.be/DrCNV7E-eKc
 
 </ul>
 
