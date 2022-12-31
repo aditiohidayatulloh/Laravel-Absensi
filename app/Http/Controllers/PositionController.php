@@ -8,7 +8,8 @@ use App\Models\Posisition;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Console\View\Components\Alert;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class PositionController extends Controller
 {
@@ -59,9 +60,9 @@ class PositionController extends Controller
             'position_name.min' => "Minimal 2 karakter"
         ]);
 
-        $kategori = Position::create($request->all());
+        $position = Position::create($request->all());
 
-        // Alert::success('Berhasil', 'Berhasil Menambahkan Kategori');
+        Alert::success('Berhasil', 'Berhasil Menambahkan Jabatan');
         return redirect('/position');
     }
 
@@ -123,7 +124,7 @@ class PositionController extends Controller
 
         $position->save();
 
-        // Alert::success('Berhasil', 'Update Success');
+        Alert::success('Berhasil', 'Update Success');
         return redirect('/position');
     }
 
@@ -139,7 +140,7 @@ class PositionController extends Controller
 
         $position->delete();
 
-        // Alert::success('Berhasil', 'Berhasil Menghapus Kategori');
+        Alert::success('Berhasil', 'Berhasil Menghapus Kategori');
         return redirect('position');
     }
 }

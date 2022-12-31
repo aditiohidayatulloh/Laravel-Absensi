@@ -94,7 +94,7 @@ class EmployeeController extends Controller
             'users_id'=>$user->id,
         ]);
 
-        // Alert::success('Success', 'Berhasil Menambah Anggota');
+        Alert::success('Success', 'Berhasil Menambah Karyawan');
         return redirect('/employee');
     }
 
@@ -171,11 +171,11 @@ class EmployeeController extends Controller
         $profile->address = $request->address;
         $profile->phone_number = $request->phone_number;
 
-        dd($request->all());
+        // dd($request->all());
         $profile->save();
         $user->save();
 
-        // Alert::success('Success', 'Berhasil Mengubah Profile');
+        Alert::success('Success', 'Berhasil Mengubah Profile');
         return redirect('/employee');
     }
 
@@ -191,7 +191,7 @@ class EmployeeController extends Controller
 
         $user->delete();
 
-        // Alert::success('Berhasil', 'Berhasil Mengapus Anggota');
+        Alert::success('Berhasil', 'Berhasil Mengapus Karyawan');
         return redirect('/employee');
     }
 }

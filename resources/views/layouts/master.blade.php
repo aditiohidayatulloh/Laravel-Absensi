@@ -88,6 +88,8 @@
 	<!-- Azzara JS -->
 	<script src="{{ asset('/template/assets/js/ready.min.js') }}"></script>
 
+    @include('sweetalert::alert')
+
     @stack('scripts')
 </body>
 </html>

@@ -22,12 +22,15 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::resource('profile', ProfileController::class)->only('index','update','edit');
-
-Route::resource('employee', EmployeeController::class);
-
-Route::resource('position', PositionController::class);
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::resource('profile', ProfileController::class)->only('index','update','edit');
+
+    Route::resource('employee', EmployeeController::class);
+
+    Route::resource('position', PositionController::class);
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
+

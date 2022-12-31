@@ -89,7 +89,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="forms/forms.html">
+										<a href="/position/create">
 											<span class="sub-item">Tambah Jabatan</span>
 										</a>
 									</li>

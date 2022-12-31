@@ -8,7 +8,6 @@ use App\Models\Position;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\User;
-
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -66,7 +65,7 @@ class ProfileController extends Controller
         $profile->save();
         $user->save();
 
-        // Alert::success('Success', 'Berhasil Mengubah Profile');
+        Alert::success('Success', 'Berhasil Mengubah Profile');
         return redirect('/profile');
     }
 
