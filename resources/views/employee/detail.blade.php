@@ -28,8 +28,8 @@ href="https://cdn.datatables.net/v/bs4/dt-1.12.1/date-1.1.2/fc-4.1.0/r-2.3.0/sc-
 @endpush
 
 @section('content')
-<h1 class="text-primary mx-3 my-3">Profile Karywan</h1>
-<div class="card mx-3 my-2">
+<h1 class="text-primary m-4">Profile Karywan</h1>
+<div class="card m-4">
         <div class="row d-flex" style="gap:3rem">
             <div class="col-2 ml-5 my-4">
                 @if ($profile->profile_picture !=null)
@@ -39,10 +39,16 @@ href="https://cdn.datatables.net/v/bs4/dt-1.12.1/date-1.1.2/fc-4.1.0/r-2.3.0/sc-
                 <img src="{{ asset('template/img/boy.jpg') }}" style="width:100px;height:100px;border-radius:50px">
                 @endif
             </div>
+
             <div class="col-4">
                 <div class="form-group">
                     <label for="nama" class="text-lg text-primary font-weight-bold">Nama Lengkap</label>
                     <h4>{{ $profile->user->name }}</h4>
+                </div>
+
+                <div class="form-group">
+                    <label for="position_name" class="text-lg text-primary font-weight-bold">Posisi</label>
+                    <h4>{{ $user_position->position_name }}</h4>
                 </div>
 
                 <div class="form-group">

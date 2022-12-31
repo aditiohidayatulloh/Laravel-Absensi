@@ -57,7 +57,7 @@
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->profile->employee_code }}</td>
                                 <td>{{ $item->email }}</td>
-                                <td>Administrator</td>
+                                <td>{{ $item->positions->position_name }}</td>
                                 <td>
 
                                     <button class="btn btn-info"><a href="/employee/{{ $item->id }}"
@@ -91,7 +91,8 @@
                                                     <form action="/employee/{{ $item->id }}" method="post">
                                                         @csrf
                                                         @method('delete')
-                                                        <input type="submit" value="Delete"class="btn btn-danger btn-border">
+                                                        <input type="submit"
+                                                            value="Delete"class="btn btn-danger btn-border">
                                                     </form>
                                                 </div>
                                             </div>

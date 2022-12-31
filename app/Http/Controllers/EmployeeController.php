@@ -68,6 +68,7 @@ class EmployeeController extends Controller
             'name.required'=>"Nama tidak boleh kosong",
             'employee_code.required'=>"Nomor Induk tidak boleh kosong",
             'employee_code.unique'=>"Kode Telah Telah Ada",
+            'position.required'=>"Posisi Tidak Boleh Kosong",
             'gender.required'=>"Posisi tidak boleh kosong",
             'gender.required'=>"gender tidak boleh kosong",
             'address.required'=>"address tidak boleh kosong",
@@ -82,7 +83,7 @@ class EmployeeController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
-            'position_id' =>$request['position']
+            'position_id'=>$request['position']
         ]);
 
         Profile::create([
@@ -94,7 +95,7 @@ class EmployeeController extends Controller
         ]);
 
         // Alert::success('Success', 'Berhasil Menambah Anggota');
-        return redirect('/anggota');
+        return redirect('/employee');
     }
 
     /**
@@ -105,9 +106,13 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
+        $iduser = Auth::id();
         $employee = User::find($id);
-        $profile = Profile::where('users_id',$id)->first();
-        return view('employee.detail',['empolyee'=>$employee,'profile'=>$profile]);
+        $user_level = Auth::user()->position_id;
+        $profile = Profile::where('users_id',$iduser)->first();
+        $user_position = Position::where('id',$user_level)->first();
+        $position = Position::all();
+        return view('employee.detail',['profile'=>$profile,'user_position'=>$user_position,'position'=>$position]);
     }
 
     /**
@@ -122,22 +127,24 @@ class EmployeeController extends Controller
         $profile = Profile::where('users_id',$id)->first();
         $user_level = Auth::user()->position_id;
         $user_position = Position::where('id',$user_level)->first();
-        return view('employee.edit',['employee'=>$employee,'profile'=>$profile,'user_position'=>$user_position]);
+        $position = Position::all();
+        return view('employee.edit',['employee'=>$employee,'profile'=>$profile,'user_position'=>$user_position,'position'=>$position]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Employee  $employee
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request, $id)
     {
 
         $request->validate([
             'name'=> 'required',
             'employee_code'=> 'required',
+            'position'=> 'required',
             'gender'=> 'required',
             'address'=> 'required',
             'phone_number'=> 'required',
@@ -145,6 +152,7 @@ class EmployeeController extends Controller
         ],
         [
             'name.required'=>"Nama tidak boleh kosong",
+            'position.required'=>"Posisi tidak boleh kosong",
             'employee_code.required'=>"Nomor Induk tidak boleh kosong",
             'gender.required'=>"gender tidak boleh kosong",
             'address.required'=>"address tidak boleh kosong",
@@ -152,28 +160,18 @@ class EmployeeController extends Controller
             'profile_picture.mimes' =>"Foto Profile Harus Berupa jpg,jpeg,atau png",
             'profile_picture.max' => "ukuran gambar tidak boleh lebih dari 2048 MB"
         ]);
+
         $user = User::find($id);
         $profile = Profile::find($id);
 
-        if($request->has('profile_picture')){
-         $path='images/photoProifle';
-
-         File::delete($path.$profile->profile_picture);
-
-         $namaGambar = time().'.'.$request->profile_picture->extension();
-
-         $request->profile_picture->move(public_path('images/profile_picture'),$namaGambar);
-
-         $profile->profile_picture =$namaGambar;
-
-         $profile->save();
-        }
         $user->name = $request->name;
+        $user->position_id = $request->position;
         $profile->employee_code = $request->employee_code;
         $profile->gender = $request->gender;
         $profile->address = $request->address;
         $profile->phone_number = $request->phone_number;
 
+        dd($request->all());
         $profile->save();
         $user->save();
 

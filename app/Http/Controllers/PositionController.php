@@ -8,6 +8,7 @@ use App\Models\Posisition;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Console\View\Components\Alert;
 
 class PositionController extends Controller
 {
@@ -34,7 +35,12 @@ class PositionController extends Controller
      */
     public function create()
     {
-        //
+        $iduser = Auth::id();
+        $user_level = Auth::user()->position_id;
+        $profile = Profile::where('users_id',$iduser)->first();
+        $user_position = Position::where('id',$user_level)->first();
+
+        return view('position.create',['profile'=>$profile,'user_position'=>$user_position]);
     }
 
     /**
@@ -45,51 +51,95 @@ class PositionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'position_name' => 'required|min:2',
+        ],
+        [
+            'position_name.required' => "Nama Posisi Harus Diisi",
+            'position_name.min' => "Minimal 2 karakter"
+        ]);
+
+        $kategori = Position::create($request->all());
+
+        // Alert::success('Berhasil', 'Berhasil Menambahkan Kategori');
+        return redirect('/position');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Posisition  $posisition
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Posisition $posisition)
+    public function show($id)
     {
-        //
+        $iduser = Auth::id();
+        $position = Position::where('id',$id)->first();
+        $user_level = Auth::user()->position_id;
+        $profile = Profile::where('users_id',$iduser)->first();
+        $user_position = Position::where('id',$user_level)->first();
+
+        return view('position.detail',['position'=>$position,'profile'=>$profile,'user_position'=>$user_position]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Posisition  $posisition
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Posisition $posisition)
+    public function edit($id)
     {
-        //
+        $iduser = Auth::id();
+        $position = Position::where('id',$id)->first();
+        $user_level = Auth::user()->position_id;
+        $profile = Profile::where('users_id',$iduser)->first();
+        $user_position = Position::where('id',$user_level)->first();
+
+        return view('position.edit',['position'=>$position,'profile'=>$profile,'user_position'=>$user_position]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Posisition  $posisition
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Posisition $posisition)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'position_name' => 'required|min:2',
+        ],
+        [
+            'position_name.required' => "Masukkan Nama Jabatan",
+            'position_name.min' => "Minimal 2 karakter"
+        ]);
+
+        $position =Position::find($id);
+
+        $position ->position_name =$request->position_name;
+        $position ->description= $request->description;
+
+        $position->save();
+
+        // Alert::success('Berhasil', 'Update Success');
+        return redirect('/position');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Posisition  $posisition
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Posisition $posisition)
+    public function destroy($id)
     {
-        //
+        $position=Position::find($id);
+
+        $position->delete();
+
+        // Alert::success('Berhasil', 'Berhasil Menghapus Kategori');
+        return redirect('position');
     }
 }
