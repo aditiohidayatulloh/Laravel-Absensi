@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Salary;
 use App\Models\Profile;
 use App\Models\Position;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -40,8 +41,9 @@ class PositionController extends Controller
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
-
-        return view('position.create',['profile'=>$profile,'user_position'=>$user_position]);
+        $salary = Salary::all();
+        // dd($salary);
+        return view('position.create',['profile'=>$profile,'user_position'=>$user_position,'salary'=>$salary]);
     }
 
     /**
@@ -54,10 +56,13 @@ class PositionController extends Controller
     {
         $request->validate([
             'position_name' => 'required|min:2',
+            'salary_id'=>'required',
+            'descrirption' => 'nullable'
         ],
         [
             'position_name.required' => "Nama Posisi Harus Diisi",
-            'position_name.min' => "Minimal 2 karakter"
+            'position_name.min' => "Minimal 2 karakter",
+            'salary_id.required' => "Golongan Gaji Harus Diisi",
         ]);
 
         $position = Position::create($request->all());
@@ -80,8 +85,9 @@ class PositionController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
         $employee = User::where('position_id',$id)->get();
+        $salary = Salary::all();
 
-        return view('position.detail',['position'=>$position,'profile'=>$profile,'user_position'=>$user_position,'employee'=>$employee]);
+        return view('position.detail',['position'=>$position,'profile'=>$profile,'user_position'=>$user_position,'employee'=>$employee,'salary'=>$salary]);
     }
 
     /**
@@ -97,8 +103,8 @@ class PositionController extends Controller
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
-
-        return view('position.edit',['position'=>$position,'profile'=>$profile,'user_position'=>$user_position]);
+        $salary = Salary::all();
+        return view('position.edit',['position'=>$position,'profile'=>$profile,'user_position'=>$user_position,'salary'=>$salary]);
     }
 
     /**
@@ -112,15 +118,18 @@ class PositionController extends Controller
     {
         $request->validate([
             'position_name' => 'required|min:2',
+            'salary_id' => 'required',
         ],
         [
             'position_name.required' => "Masukkan Nama Jabatan",
-            'position_name.min' => "Minimal 2 karakter"
+            'position_name.min' => "Minimal 2 karakter",
+            'salary_id.required' => "Masukkan Golongan Gaji",
         ]);
 
-        $position =Position::find($id);
+        $position = Position::find($id);
 
         $position ->position_name =$request->position_name;
+        $position ->salary_id =$request->salary_id;
         $position ->description= $request->description;
 
         $position->save();
@@ -141,7 +150,7 @@ class PositionController extends Controller
 
         $position->delete();
 
-        Alert::success('Berhasil', 'Berhasil Menghapus Kategori');
+        Alert::success('Berhasil', 'Berhasil Menghapus Jabatan');
         return redirect('position');
     }
 }

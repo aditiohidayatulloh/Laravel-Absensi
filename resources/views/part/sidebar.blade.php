@@ -106,7 +106,7 @@
 							<div class="collapse" id="tables">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="tables/tables.html">
+										<a href="/salary">
 											<span class="sub-item">Lihat Gaji Karyawan</span>
 										</a>
 									</li>

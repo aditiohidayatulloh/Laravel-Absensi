@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('salary', function (Blueprint $table) {
             $table->id();
             $table->string('class');
-            $table->integer('salary');
+            $table->string('salary');
             $table->timestamps();
         });
     }

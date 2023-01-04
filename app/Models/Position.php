@@ -13,10 +13,15 @@ class Position extends Model
     protected $table = "position";
     protected $fillable = [
         'position_name',
+        'salary_id',
         'description'
     ];
 
     public function users(){
         return $this->hasMany(User::class,'position_id','id');
+    }
+
+    public function salaries() {
+        return $this->belongsto(Salary::class,'salary_id');
     }
 }

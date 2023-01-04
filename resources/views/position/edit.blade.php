@@ -25,6 +25,21 @@
             @enderror
 
             <div class="form-group">
+                <label for="employee_code" class="text-md text-primary font-weight-bold">Posisi atau Jabatan</label>
+                <select name="salary_id" id="salary_id" class="form-control">
+                <option value="">Pilih Golongan Gaji</option>
+                @foreach ($salary as $item )
+                <option value="{{ $item->id }}">Golongan {{ $item->class }} - {{ $item->salary }}</option>
+                @endforeach
+                <option value="">Tidak Ada Data</option>
+                </select>
+            </div>
+
+            @error('salary_id')
+            <div class="alert-danger mx-4 my-2 px-2 py-2"> {{ $message }}</div>
+            @enderror
+
+            <div class="form-group">
                 <label class="text-primary font-weight-bold">Deskripsi</label>
                 <textarea class="form-control" name="description" cols="30" rows="3">{{ old('description', $position->description) }}</textarea>
 

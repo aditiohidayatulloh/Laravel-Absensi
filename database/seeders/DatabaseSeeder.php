@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
     {
         Salary::create([
             'class'=>'I',
-            'salary'=>'3500000',
+            'salary'=>'3.500.000',
         ]);
         Position::create([
             'position_name'=>'Administrator',

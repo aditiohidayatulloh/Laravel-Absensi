@@ -32,22 +32,22 @@
     <h1 class="text-primary m-4 strong">Detail Posisi</h1>
 
     <div class="card m-4">
-        <h3 class="judul m-3 text-primary" style="font-weight:bold;">{{ $position->position_name }}</h3>
+        <h3 class="mx-4 my-3 text-primary font-weight-bold">{{ $position->position_name }}</h3>
         @if ($position->description != null)
-            <p class="description m-3">{{ $position->description }}</p>
+        <p class="description m-3">{{ $position->description }}</p>
         @else
-            <p class="description m-3">Tidak Ada Deskripsi</p>
+        <p class="m-4">Tidak Ada Deskripsi</p>
         @endif
         <div class="d-flex justify-content-end">
             <a href="/position" class="btn btn-info mx-3 my-3 px-4 py-1">Kembali</a>
         </div>
     </div>
 
-    <h4 class="m-4 text-primary" style="font-weight: bold;">Karyawan Dengan Posisi Ini :</h4>
 
     <div class="col-lg-12">
         <div class="card mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between ">
+                <h4 class="mx-2 my-0 text-primary font-weight-bold">Karyawan Dengan Posisi Ini :</h4>
             </div>
             <div class="table-responsive p-3">
                 <table class="table align-items-center table-flush table-hover" id="dataTableHover">
