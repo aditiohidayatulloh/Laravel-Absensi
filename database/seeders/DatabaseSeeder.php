@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
+use App\Models\Salary;
 use App\Models\Profile;
 use App\Models\Position;
 use Illuminate\Database\Seeder;
@@ -18,8 +19,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Salary::create([
+            'class'=>'I',
+            'salary'=>'3500000',
+        ]);
         Position::create([
             'position_name'=>'Administrator',
+            'salary_id'=>'1'
         ]);
         User::create([
             'name'=> 'Admin',

@@ -116,7 +116,7 @@
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#maps">
                             <i class="fa-regular fa-calendar-days"></i>
-								<p>Jadwal</p>
+								<p>Jam Kerja</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="maps">
@@ -124,11 +124,6 @@
 									<li>
 										<a href="maps/googlemaps.html">
 											<span class="sub-item">Jadwal Karyawan</span>
-										</a>
-									</li>
-									<li>
-										<a href="maps/fullscreenmaps.html">
-											<span class="sub-item">Jadwal Cuti</span>
 										</a>
 									</li>
 								</ul>

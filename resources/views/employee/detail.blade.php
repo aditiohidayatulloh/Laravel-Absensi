@@ -33,7 +33,7 @@ href="https://cdn.datatables.net/v/bs4/dt-1.12.1/date-1.1.2/fc-4.1.0/r-2.3.0/sc-
         <div class="row d-flex" style="gap:3rem">
             <div class="col-2 ml-5 my-4">
                 @if ($profile->profile_picture !=null)
-                <img src="{{ asset('/images/photoProfile/' . $profile->photoProfile) }}"
+                <img src="{{ asset('/images/profile_picture/' . $profile->profile_picture) }}"
                         style="width:150px;height:150px;border-radius:100px">
                 @else
                 <img src="{{ asset('template/img/boy.jpg') }}" style="width:100px;height:100px;border-radius:50px">

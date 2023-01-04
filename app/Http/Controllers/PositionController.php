@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use App\Models\Position;
-use App\Models\Posisition;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -79,8 +79,9 @@ class PositionController extends Controller
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
+        $employee = User::where('position_id',$id)->get();
 
-        return view('position.detail',['position'=>$position,'profile'=>$profile,'user_position'=>$user_position]);
+        return view('position.detail',['position'=>$position,'profile'=>$profile,'user_position'=>$user_position,'employee'=>$employee]);
     }
 
     /**

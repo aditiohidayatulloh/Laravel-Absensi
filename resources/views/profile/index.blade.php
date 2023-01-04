@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="card mx-4 my-4">
+    <div class="card mx-5 my-4">
         <div class="card-header py-3">
             <h1 class="font-weight-bold text-primary">My Profile</h1>
         </div>
