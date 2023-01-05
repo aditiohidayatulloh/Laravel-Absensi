@@ -9,9 +9,9 @@
 @endsection
 
 @section('content')
-    <h1 class="text-primary mx-3 mt-4">DASHBOARD</h1>
+    <h1 class="text-primary mx-3 my-4">DASHBOARD</h1>
 
-    <div class="row mx-2">
+    <div class="row mx-2 my-2">
         <div class="col-sm-6 col-md-3">
             <div class="card card-stats card-round">
                 <div class="card-body ">
@@ -62,7 +62,7 @@
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
                                 <p class="card-category">Divisi</p>
-                                <h4 class="card-title">$ 1,345</h4>
+                                <h4 class="card-title">{{ $division_count }}</h4>
                             </div>
                         </div>
                     </div>

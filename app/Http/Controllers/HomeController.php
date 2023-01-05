@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Division;
 use App\Models\Position;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -34,6 +35,7 @@ class HomeController extends Controller
         $user_position = Position::where('id',$user_level)->first();
         $employee_count = User::count();
         $position_count = Position::count();
-        return view('dashboard',['profile'=>$profile,'employee_count'=>$employee_count,'user_position'=>$user_position,'position_count'=>$position_count]);
+        $division_count = Division::count();
+        return view('dashboard',['profile'=>$profile,'employee_count'=>$employee_count,'user_position'=>$user_position,'position_count'=>$position_count,'division_count'=>$division_count]);
     }
 }

@@ -85,7 +85,7 @@ class PositionController extends Controller
     public function show($id)
     {
         $iduser = Auth::id();
-        $position = Position::where('id',$id)->first();
+        $position = Position::find($id);
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();

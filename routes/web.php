@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PositionController;
 
@@ -31,6 +32,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('employee', EmployeeController::class);
 
     Route::resource('position', PositionController::class);
+
+    Route::resource('division', DivisionController::class);
 
     Route::resource('salary', SalaryController::class);
 

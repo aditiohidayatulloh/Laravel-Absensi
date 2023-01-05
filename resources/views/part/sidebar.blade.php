@@ -137,7 +137,7 @@
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#schedule">
                             <i class="fa-regular fa-calendar-days"></i>
-								<p>Jam Kerja</p>
+								<p>Jadwal</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="schedule">
