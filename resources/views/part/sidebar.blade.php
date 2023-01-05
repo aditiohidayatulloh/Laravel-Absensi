@@ -33,9 +33,8 @@
 										</a>
 									</li>
 									<li>
-										<a href="#settings">
-											<span class="link-collapse">Settings</span>
-										</a>
+                                    <a class="link-collapse text-dark" href="{{route('logout')}}" data-toggle="modal" data-target="#logoutModal">Logout
+                                    </a>
 									</li>
 								</ul>
 							</div>
@@ -55,12 +54,12 @@
 							<h4 class="text-section">Menu</h4>
 						</li>
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#base">
+							<a data-toggle="collapse" href="#employee">
                             <i class="fa-solid fa-users"></i>
 								<p>Pegawai</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="base">
+							<div class="collapse" id="employee">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="/employee">
@@ -75,13 +74,35 @@
 								</ul>
 							</div>
 						</li>
+                        <li class="nav-item">
+							<a data-toggle="collapse" href="#division">
+                            <i class="fa-solid fa-users-rectangle"></i>
+								<p>Divisi</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="division">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="/division">
+											<span class="sub-item">Lihat Divisi</span>
+										</a>
+									</li>
+									<li>
+										<a href="/division/create">
+											<span class="sub-item">Tambah Divisi</span>
+										</a>
+									</li>
+
+								</ul>
+							</div>
+						</li>
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#forms">
-                            <i class="fa-solid fa-chalkboard-user"></i>
+							<a data-toggle="collapse" href="#position">
+                            <i class="fa-solid fa-user-tie"></i>
 								<p>Jabatan</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="forms">
+							<div class="collapse" id="position">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="/position">
@@ -98,12 +119,12 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#tables">
+							<a data-toggle="collapse" href="#salary">
 							<i class="fa-solid fa-money-bill-wave"></i>
 								<p>Gaji</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="tables">
+							<div class="collapse" id="salary">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="/salary">
@@ -114,12 +135,12 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#maps">
+							<a data-toggle="collapse" href="#schedule">
                             <i class="fa-regular fa-calendar-days"></i>
 								<p>Jam Kerja</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="maps">
+							<div class="collapse" id="schedule">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="maps/googlemaps.html">
@@ -130,12 +151,12 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#custompages">
+							<a data-toggle="collapse" href="#attendance">
                             <i class="fa-regular fa-calendar"></i>
 								<p>Absensi</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="custompages">
+							<div class="collapse" id="attendance">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="login.html">

@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('position', function (Blueprint $table) {
-            $table->unsignedBigInteger('salary_id')->after('description')->nullable();
-            $table->foreign('salary_id')->references('id')->on('salary')->onUpdate('cascade')->onDelete('cascade');
+        Schema::create('division', function (Blueprint $table) {
+            $table->id();
+            $table->string('division_name');
+            $table->string('description')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -26,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('position', function (Blueprint $table) {
-            $table->dropColumn('salary_id');
-        });
+        Schema::dropIfExists('division');
     }
 };

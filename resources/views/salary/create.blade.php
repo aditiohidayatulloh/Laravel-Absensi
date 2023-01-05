@@ -14,7 +14,7 @@
 
     <div class="card mx-4 my-4 px-2">
 
-        <form action="/salary/{{$salary->id}}" method="post">
+        <form action="/salary" method="post">
             @csrf
             <div class="form-group">
                 <label class="text-md text-primary font-weight-bold">Golongan</label>

@@ -9,6 +9,7 @@ use App\Models\Profile;
 use App\Models\Position;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Division;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,9 +24,14 @@ class DatabaseSeeder extends Seeder
             'class'=>'I',
             'salary'=>'3.500.000',
         ]);
+        Division::create([
+            'division_name'=>'Administrsi',
+            'description'=>'Bagian Pengurusan Administrasi',
+        ]);
         Position::create([
             'position_name'=>'Administrator',
-            'salary_id'=>'1'
+            'salary_id'=>'1',
+            'division_id'=>'1'
         ]);
         User::create([
             'name'=> 'Admin',

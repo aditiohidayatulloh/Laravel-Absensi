@@ -47,8 +47,14 @@ href="https://cdn.datatables.net/v/bs4/dt-1.12.1/date-1.1.2/fc-4.1.0/r-2.3.0/sc-
                 </div>
 
                 <div class="form-group">
+                    <label for="position_name" class="text-lg text-primary font-weight-bold">Divisi</label>
+                    <h4>{{ $employee->positions->division->division_name }}</h4>
+                </div>
+
+
+                <div class="form-group">
                     <label for="position_name" class="text-lg text-primary font-weight-bold">Posisi</label>
-                    <h4>{{ $user_position->position_name }}</h4>
+                    <h4>{{ $employee->positions->position_name }}</h4>
                 </div>
 
                 <div class="form-group">

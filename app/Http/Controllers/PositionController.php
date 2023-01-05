@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Salary;
 use App\Models\Profile;
+use App\Models\Division;
 use App\Models\Position;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -23,6 +24,7 @@ class PositionController extends Controller
     {
         $iduser = Auth::id();
         $position = Position::all();
+        $division = Division::all();
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
@@ -42,8 +44,9 @@ class PositionController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
         $salary = Salary::all();
+        $division = Division::all();
         // dd($salary);
-        return view('position.create',['profile'=>$profile,'user_position'=>$user_position,'salary'=>$salary]);
+        return view('position.create',['profile'=>$profile,'user_position'=>$user_position,'salary'=>$salary,'division'=>$division]);
     }
 
     /**
@@ -56,12 +59,14 @@ class PositionController extends Controller
     {
         $request->validate([
             'position_name' => 'required|min:2',
+            'division_id'=>'required',
             'salary_id'=>'required',
             'descrirption' => 'nullable'
         ],
         [
             'position_name.required' => "Nama Posisi Harus Diisi",
             'position_name.min' => "Minimal 2 karakter",
+            'division_id.required' => "Divisi Harus Diisi",
             'salary_id.required' => "Golongan Gaji Harus Diisi",
         ]);
 
@@ -103,8 +108,9 @@ class PositionController extends Controller
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
+        $division = Division::all();
         $salary = Salary::all();
-        return view('position.edit',['position'=>$position,'profile'=>$profile,'user_position'=>$user_position,'salary'=>$salary]);
+        return view('position.edit',['position'=>$position,'profile'=>$profile,'user_position'=>$user_position,'salary'=>$salary,'division'=>$division]);
     }
 
     /**
@@ -118,17 +124,20 @@ class PositionController extends Controller
     {
         $request->validate([
             'position_name' => 'required|min:2',
+            'division_id' => 'required',
             'salary_id' => 'required',
         ],
         [
-            'position_name.required' => "Masukkan Nama Jabatan",
+            'position_name.required' => "Nama Jabatan Harus Diisi",
             'position_name.min' => "Minimal 2 karakter",
-            'salary_id.required' => "Masukkan Golongan Gaji",
+            'division_id.required' => "Divisi Harus Diisi",
+            'salary_id.required' => "Golongan Gaji Harus Diisi",
         ]);
 
         $position = Position::find($id);
 
         $position ->position_name =$request->position_name;
+        $position ->divison_id =$request->divison_id;
         $position ->salary_id =$request->salary_id;
         $position ->description= $request->description;
 

@@ -25,6 +25,21 @@
             @enderror
 
             <div class="form-group">
+            <label for="employee_code" class="text-md text-primary font-weight-bold">Divisi</label>
+            <select name="division_id" id="division_id" class="form-control">
+            <option value="">Pilih Divisi</option>
+            @foreach ($division as $item )
+            <option value="{{ $item->id }}">{{ $item->division_name }}</option>
+            @endforeach
+            </select>
+        </div>
+
+        @error('division_id')
+        <div class="alert-danger mx-4 my-2 px-2 py-2"> {{ $message }}</div>
+        @enderror
+
+
+            <div class="form-group">
                 <label for="employee_code" class="text-md text-primary font-weight-bold">Posisi atau Jabatan</label>
                 <select name="salary_id" id="salary_id" class="form-control">
                 <option value="">Pilih Golongan Gaji</option>

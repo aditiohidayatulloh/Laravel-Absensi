@@ -45,7 +45,7 @@
                             <th scope="col">No.</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Kode Pegawai</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Divisi</th>
                             <th scope="col">Jabatan</th>
                             <th scope="col">Tombol Aksi</th>
                         </tr>
@@ -56,7 +56,7 @@
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->profile->employee_code }}</td>
-                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->positions->division->division_name }}</td>
                                 <td>{{ $item->positions->position_name }}</td>
                                 <td>
 

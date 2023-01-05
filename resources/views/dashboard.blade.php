@@ -18,7 +18,7 @@
                     <div class="row align-items-center">
                         <div class="col-icon">
                             <div class="icon-big text-center icon-primary bubble-shadow-small">
-                                <i class="fas fa-users"></i>
+                            <i class="fa-solid fa-users"></i>
                             </div>
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
@@ -37,7 +37,7 @@
                     <div class="row align-items-center">
                         <div class="col-icon">
                             <div class="icon-big text-center icon-info bubble-shadow-small">
-                                <i class="far fa-newspaper"></i>
+                            <i class="fa-solid fa-user-tie"></i>
                             </div>
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
@@ -55,13 +55,13 @@
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-icon">
-                            <div class="icon-big text-center icon-success bubble-shadow-small">
-                                <i class="far fa-chart-bar"></i>
+                            <div class="icon-big text-center icon-warning bubble-shadow-small">
+                            <i class="fa-solid fa-users-rectangle"></i>
                             </div>
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Sales</p>
+                                <p class="card-category">Divisi</p>
                                 <h4 class="card-title">$ 1,345</h4>
                             </div>
                         </div>

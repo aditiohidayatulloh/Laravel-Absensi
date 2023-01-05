@@ -10,19 +10,33 @@
 
 @section('content')
 
-<h1 class="text-primary mx-4 my-4">Tambah Posisi</h1>
+<h1 class="text-primary mx-4 my-4">Tambah Jabatan</h1>
 
     <div class="card mx-4 my-4 px-2">
 
         <form action="/position" method="post">
             @csrf
             <div class="form-group">
-                <label class="text-md text-primary font-weight-bold">Nama Posisi</label>
+                <label class="text-md text-primary font-weight-bold">Nama Jabatan</label>
                 <input name="position_name" type="text" class="form-control">
             </div>
             @error('position_name')
-                <div class="alert-danger mx-2 px-2 py-2">{{ $message }}</div>
+                <div class="alert-danger mx-4 my-2 px-2 py-2">{{ $message }}</div>
             @enderror
+
+            <div class="form-group">
+            <label for="employee_code" class="text-md text-primary font-weight-bold">Divisi</label>
+            <select name="division_id" id="division_id" class="form-control">
+            <option value="">Pilih Divisi</option>
+            @foreach ($division as $item )
+            <option value="{{ $item->id }}">{{ $item->division_name }}</option>
+            @endforeach
+            </select>
+        </div>
+
+        @error('division_id')
+        <div class="alert-danger mx-4 my-2 px-2 py-2"> {{ $message }}</div>
+        @enderror
 
             <div class="form-group">
             <label for="employee_code" class="text-md text-primary font-weight-bold">Posisi atau Jabatan</label>

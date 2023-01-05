@@ -39,7 +39,8 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">No.</th>
-                        <th scope="col">Nama Jabatan</th>
+                        <th scope="col">Jabatan</th>
+                        <th scope="col">Divisi</th>
                         <th scope="col">Golongan</th>
                         <th scope="col">Gaji</th>
                         <th scope="col">Tombol Aksi</th>
@@ -50,6 +51,7 @@
                         <tr>
                             <th scope="row">{{ $key + 1 }}</th>
                             <td>{{ $item->position_name }}</td>
+                            <td>{{ $item->division->division_name }}</td>
                             <td>{{ $item->salaries->class }}</td>
                             <td>Rp.{{ $item->salaries->salary }}</td>
                             <td>

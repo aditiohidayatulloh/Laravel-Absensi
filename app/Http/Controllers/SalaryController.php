@@ -138,11 +138,11 @@ class SalaryController extends Controller
      */
     public function destroy($id)
     {
-        $salary=Salary::find($id);
+        $salary= Salary::find($id);
 
         $salary->delete();
 
-        Alert::success('Berhasil', 'Berhasil Menghapus Kategori');
+        Alert::success('Berhasil', 'Berhasil Menghapus Gaji');
         return redirect('salary');
     }
 }
