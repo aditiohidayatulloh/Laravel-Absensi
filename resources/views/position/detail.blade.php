@@ -32,12 +32,19 @@
     <h1 class="text-primary m-4 strong">Detail Posisi</h1>
 
     <div class="card m-4">
-        <h3 class="mx-4 my-3 text-primary font-weight-bold">{{ $position->position_name }}</h3>
-        @if ($position->description != null)
-        <p class="description m-3">{{ $position->description }}</p>
-        @else
-        <p class="m-4">Tidak Ada Deskripsi</p>
-        @endif
+        <div class="card-header">
+            <h3 class="text-primary font-weight-bold">{{ $position->position_name }}</h3>
+        </div>
+        <div class="card-body">
+            <h4 class="text-secondary font-weight-bold">Divisi : {{ $position->division->division_name }}</h4>
+            <h4 class="text-secondary font-weight-bold">Gaji : <span class="text-dark">{{ $position->salaries->salary }}</span></h4>
+            <h4 class="text-secondary font-weight-bold">Deskripsi : </h4>
+            @if ($position->description != null)
+            <h5>{{ $position->description }}</h5>
+            @else
+            <h5>Tidak Ada Deskripsi</h5>
+            @endif
+        </div>
         <div class="d-flex justify-content-end">
             <a href="/position" class="btn btn-info mx-3 my-3 px-4 py-1">Kembali</a>
         </div>

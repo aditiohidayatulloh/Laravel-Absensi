@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Salary;
 use App\Models\Division;
 use App\Models\Position;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -56,6 +57,15 @@ class PDFController extends Controller
 
         // return $pdf->download('position_report.pdf');
         return $pdf->stream('position_report.pdf');
+    }
+
+    public function ScheduleReport(Request $request){
+        $schedule = Schedule::all();
+
+        $pdf = PDF::loadView('PDFReport.schedule_report',['schedule'=>$schedule]);
+
+        // return $pdf->download('Schedule_report.pdf');
+        return $pdf->stream('schedule_report.pdf');
     }
 
 }

@@ -10,10 +10,12 @@
 
 @section('content')
 
-    <h1 class="text-primary font-weight-bold m-4">{{ $division->division_name }}</h1>
+    <h1 class="text-primary font-weight-bold m-4">Detail Divisi</h1>
 
     <div class="card m-4">
-        <p class="text-primary font-weight-bold m-3">Deskripsi</p>
+        <div class="card-header">
+            <h3 class="text-primary font-weight-bold">{{ $division->division_name }}</h3>
+        </div>
 
         @if ($division->description ==null)
         <p class="m-3">Tidak Ada Deskripsi</p>

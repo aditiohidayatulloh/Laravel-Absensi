@@ -18,11 +18,12 @@
 # Fitur Requirements :
 <ol>
 <li>Setiap User Harus Terdaftar Sebagai Pegawai Untuk Bisa Mengakses Web</li>
-<li>Satu user hanya dapat memiliki satu profile</li>
-<li>setiap user dapat mengubah profilenya masing"</li>
+<!-- <li>Satu user hanya dapat memiliki satu profile</li>
+<li>setiap user dapat mengubah profilenya masing"</li> -->
 <li>Pengelolaan Data Karyawaan.</li>
 <li>Pengelolaan Data Profile.</li>
 <li>Pengelolaan Data Jabatan.</li>
+<li>Pengelolaan Data Divisi.</li>
 <li>Pengelolaan Data Gaji Karyawan.</li>
 <li>Pengelolaan Data Jadwal Karyawan.</li>
 <li>Pengelolaan Data Absensi Karyawan.</li>

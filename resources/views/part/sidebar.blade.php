@@ -148,7 +148,7 @@
 							<div class="collapse" id="schedule">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="maps/googlemaps.html">
+										<a href="/schedule">
 											<span class="sub-item">Jadwal Karyawan</span>
 										</a>
 									</li>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Salary Report</title>
+	<title>Shedule Report</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -12,23 +12,27 @@
 		}
 	</style>
 	<center>
-		<h3>Salary Report</h3>
+		<h3>Schedule Report</h3>
 	</center>
 
 	<table class='table table-bordered mt-3'>
 		<thead>
 			<tr>
 				<th>No</th>
-				<th>Golongan</th>
-                <th>Jumlah Gaji</th>
+				<th>Hari</th>
+                <th>Shift</th>
+                <th>Jam Masuk</th>
+                <th>Jam Keluar</th>
 			</tr>
 		</thead>
 		<tbody>
-        @forelse ($salary as $item )
+        @forelse ($schedule as $item )
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $item->class }}</td>
-                            <td>{{ $item->salary }}</td>
+                            <td>{{ $item->day }}</td>
+                            <td>{{ $item->shifts }}</td>
+                            <td>{{ $item->time_in }}</td>
+                            <td>{{ $item->time_out }}</td>
                         </tr>
                         @empty
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PositionController;
+use App\Http\Controllers\ScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,11 +34,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('position', PositionController::class);
     Route::resource('division', DivisionController::class);
     Route::resource('salary', SalaryController::class);
+    Route::resource('schedule', ScheduleController::class);
 
     Route::get('/employeereport',[PDFController::class,'EmployeeReport']);
     Route::get('/salaryreport',[PDFController::class,'SalaryReport']);
     Route::get('/divisionreport',[PDFController::class,'DivisionReport']);
-    Route::get('/positionreport',[PDFController::class,'PositionReport']);
+    Route::get('/schedulereport',[PDFController::class,'ScheduleReport']);
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });

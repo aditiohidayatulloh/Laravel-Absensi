@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Salary;
 use App\Models\Profile;
 use App\Models\Position;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class SalaryController extends Controller
+class ScheduleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,12 +20,12 @@ class SalaryController extends Controller
     public function index()
     {
         $iduser = Auth::id();
-        $salary = Salary::all();
+        $schedule = Schedule::all();
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
 
-        return view('salary.index',['salary'=>$salary,'profile'=>$profile,'user_position'=>$user_position]);
+        return view('schedule.index',['schedule'=>$schedule,'profile'=>$profile,'user_position'=>$user_position]);
     }
 
     /**
@@ -39,12 +39,12 @@ class SalaryController extends Controller
             abort(403);
         }
         $iduser = Auth::id();
-        $salary = Salary::all();
+        $schedule = Schedule::all();
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
 
-        return view('salary.create',['salary'=>$salary,'profile'=>$profile,'user_position'=>$user_position]);
+        return view('schedule.create',['schedule'=>$schedule,'profile'=>$profile,'user_position'=>$user_position]);
     }
 
     /**
@@ -56,17 +56,23 @@ class SalaryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'class'=>'required',
-            'salary'=>'required'
+            'shifts'=>'required',
+            'day'=>'required',
+            'time_in'=>'required',
+            'time_out'=>'required',
         ],
         [
-            'class.required'=>"Masukan Golongan Gaji",
-            'salary'=>"Masukan Jumlah Gaji"
-        ]);
-        $salary = Salary::create($request->all());
+            'shifts.required'=>'Masukan Shift Kerja',
+            'day.required'=>'Masukan Hari Kerja',
+            'time_in.required'=>'Masukan Jam Masuk Kerja',
+            'time_out.required'=>'Masukan Jam Keluar Kerja',
+        ]
+    );
+    // dd($request->all());
+    $schedule = Schedule::create($request->all());
 
-        Alert::success('Berhasil', 'Berhasil Menambahkan Golongan Gaji');
-        return redirect('/salary');
+    Alert::success('Berhasil', 'Berhasil Menambahkan Jadwal Karyawan');
+    return redirect('schedule');
     }
 
     /**
@@ -78,13 +84,12 @@ class SalaryController extends Controller
     public function show($id)
     {
         $iduser = Auth::id();
-        $salary = Salary::where('id',$id)->first();
+        $schedule = Schedule::find($id)->first();
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
-        $position_salary = Position::where('salary_id',$id)->get();
 
-        return view('salary.detail',['salary'=>$salary,'profile'=>$profile,'user_position'=>$user_position,'position_salary'=>$position_salary]);
+        return view('schedule.detail',['schedule'=>$schedule,'profile'=>$profile,'user_position'=>$user_position]);
     }
 
     /**
@@ -99,12 +104,12 @@ class SalaryController extends Controller
             abort(403);
         }
         $iduser = Auth::id();
-        $salary = Salary::where('id',$id)->first();
+        $schedule = Schedule::find($id)->first();
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
 
-        return view('salary.edit',['salary'=>$salary,'profile'=>$profile,'user_position'=>$user_position]);
+        return view('schedule.edit',['schedule'=>$schedule,'profile'=>$profile,'user_position'=>$user_position]);
     }
 
     /**
@@ -117,22 +122,27 @@ class SalaryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'class'=>'required',
-            'salary'=>'required'
+            'shifts'=>'required',
+            'day'=>'required',
+            'time_in'=>'required',
+            'time_out'=>'required',
         ],
         [
-            'class.required'=>"Masukan Golongan Gaji",
-            'salary'=>"Masukan Jumlah Gaji"
-        ]);
+            'shifts.required'=>'Masukan Shift Kerja',
+            'day.required'=>'Masukan Hari Kerja',
+            'time_in.required'=>'Masukan Jam Masuk Kerja',
+            'time_out.required'=>'Masukan Jam Keluar Kerja',
+        ]
+    );
+    $schedule = Schedule::find($id);
+    $schedule->shifts = $request->shifts;
+    $schedule->day = $request->day;
+    $schedule->time_in = $request->time_in;
+    $schedule->time_out = $request->time_out;
 
-        $salary = Salary::find($id);
-        $salary->class =$request->class;
-        $salary->salary =$request->salary;
-
-        $salary->save();
-
-        Alert::success('Berhasil', 'Berhasil Update Golongan Gaji');
-        return redirect('/salary');
+    $schedule->save();
+    Alert::success('Berhasil', 'Berhasil Mengubah Jadwal Karyawan');
+    return redirect('schedule');
     }
 
     /**
@@ -143,11 +153,11 @@ class SalaryController extends Controller
      */
     public function destroy($id)
     {
-        $salary= Salary::find($id);
+        $schedule= Schedule::find($id);
 
-        $salary->delete();
+        $schedule->delete();
 
-        Alert::success('Berhasil', 'Berhasil Menghapus Gaji');
-        return redirect('salary');
+        Alert::success('Berhasil', 'Berhasil Menghapus Jadwal');
+        return redirect('schedule');
     }
 }
