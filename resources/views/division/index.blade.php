@@ -31,8 +31,12 @@
 @section('content')
 
     <h1 class="text-primary font-weight-bold m-4">Daftar Divisi</h1>
-
-    <a href="/division/create" class="btn btn-info mx-4">Tambah Divisi</a>
+    @if (Auth::user()->positions->position_name == "Administrator" || Auth::user()->positions->position_name == "CEO" )
+    <div class="mx-3 my-4">
+        <a href="/division/create" class="btn btn-info mx-2"> <i class="fa-solid fa-plus"></i> Tambah Divisi</a>
+        <a href="/divisionreport" class="btn btn-danger"><i class="fa-solid fa-print"></i> Export PDF</a>
+    </div>
+    @endif
 
     <div class="card mx-4 my-4">
         <div class="table-responsive p-3">
@@ -50,13 +54,16 @@
                             <th scope="row">{{ $key + 1 }}</th>
                             <td>{{ $item->division_name }}</td>
                             <td>
-
-                                    <button class="btn btn-info"><a href="/division/{{ $item->id }}"
-                                            style="text-decoration: none; color:white;"><i class="fa-solid fa-circle-info"></i></a></button>
-                                    <button class="btn btn-warning"><a href="/division/{{ $item->id }}/edit"
-                                            style="text-decoration: none;color:white"><i class="fa-solid fa-pen-to-square"></i></a></button>
-                                    <button class="btn btn-danger"><a data-toggle="modal"
-                                            data-target="#DeleteModal{{ $item->id }}"><i class="fa-solid fa-trash"></i></a></button>
+                                @if (Auth::user()->positions->position_name == "Administrator")
+                                <button class="btn btn-info"><a href="/division/{{ $item->id }}"
+                                        style="text-decoration: none; color:white;"><i class="fa-solid fa-circle-info"></i></a></button>
+                                <button class="btn btn-warning"><a href="/division/{{ $item->id }}/edit"
+                                        style="text-decoration: none;color:white"><i class="fa-solid fa-pen-to-square"></i></a></button>
+                                <button class="btn btn-danger"><a data-toggle="modal"
+                                        data-target="#DeleteModal{{ $item->id }}"><i class="fa-solid fa-trash"></i></a></button>
+                                @else
+                                <a href="/division/{{ $item->id }}" class="btn-sm btn-info px-3 py-2" style="text-decoration: none;color:white">Detail</a>
+                                @endif
 
                                     <!--Delete Modal -->
                                     <div class="modal fade" id="DeleteModal{{ $item->id }}" role="dialog"

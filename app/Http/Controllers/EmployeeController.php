@@ -39,6 +39,10 @@ class EmployeeController extends Controller
      */
     public function create()
     {
+        if (Auth::user()->positions->position_name != "Administrator"){
+            abort(403);
+        }
+
         $iduser = Auth::id();
         $profile = Profile::where('users_id',$iduser)->first();
         $user_level = Auth::user()->position_id;
@@ -126,6 +130,9 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()->positions->position_name !== "Administrator"){
+            abort(403);
+        }
         $employee = User::find($id);
         $profile = Profile::where('users_id',$id)->first();
         $user_level = Auth::user()->position_id;

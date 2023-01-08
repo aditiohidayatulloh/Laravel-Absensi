@@ -28,16 +28,18 @@
 @endpush
 
 @section('content')
-    <div class="mx-3 my-4">
-        <h1 class="text-primary">Daftar Pegawai</h1>
-        <a href="/employee/create" class="btn btn-info mt-3">Tambah Data Pegawai</a>
-        <a href="/cetaklaporan" class="btn btn-info mt-3 mx-2"><i class="fa-solid fa-print"></i> Export PDF</a>
+<h1 class="text-primary m-4">Daftar Pegawai</h1>
+    @if(Auth::user()->positions->position_name == "Administrator" || Auth::user()->positions->position_name == "CEO" )
+        <div class="mx-3 my-4">
+        <a href="/employee/create" class="btn btn-info mt-3"> <i class="fa-solid fa-plus"></i> Tambah Data</a>
+        <a href="/employeereport" class="btn btn-danger mt-3"><i class="fa-solid fa-print"> </i> Export PDF</a>
+        <a href="/employeereport" class="btn btn-success mt-3"><i class="fa-solid fa-file-excel"> </i> Export Excel</a>
     </div>
+    @endif
+
 
     <div class="col-lg-12">
         <div class="card mb-4">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between ">
-            </div>
             <div class="table-responsive p-3">
                 <table class="table align-items-center table-flush table-hover" id="dataTableHover">
                     <thead class="thead-light">
@@ -59,16 +61,19 @@
                                 <td>{{ $item->positions->division->division_name }}</td>
                                 <td>{{ $item->positions->position_name }}</td>
                                 <td>
-
+                                    @if (Auth::user()->positions->position_name == "Administrator")
                                     <button class="btn btn-info"><a href="/employee/{{ $item->id }}"
-                                            style="text-decoration: none; color:white;"><i
-                                                class="fa-solid fa-circle-info"></i></a></button>
+                                        style="text-decoration: none; color:white;"><i
+                                            class="fa-solid fa-circle-info"></i></a></button>
                                     <button class="btn btn-warning"><a href="/employee/{{ $item->id }}/edit"
                                             style="text-decoration: none;color:white"><i
                                                 class="fa-solid fa-pen-to-square"></i></a></button>
                                     <button class="btn btn-danger"><a data-toggle="modal"
                                             data-target="#DeleteModal{{ $item->id }}"><i
                                                 class="fa-solid fa-trash"></i></a></button>
+                                    @else
+                                    <a href="/employee/{{ $item->id }}" class="btn-sm btn-info px-3 py-2" style="text-decoration: none;color:white">Detail</a>
+                                    @endif
 
                                     <!--Delete Modal -->
                                     <div class="modal fade" id="DeleteModal{{ $item->id }}" tabindex="-1"

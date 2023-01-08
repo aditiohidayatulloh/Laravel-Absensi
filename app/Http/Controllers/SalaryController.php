@@ -35,6 +35,9 @@ class SalaryController extends Controller
      */
     public function create()
     {
+        if (Auth::user()->positions->position_name !== "Administrator"){
+            abort(403);
+        }
         $iduser = Auth::id();
         $salary = Salary::all();
         $user_level = Auth::user()->position_id;
@@ -93,6 +96,9 @@ class SalaryController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()->positions->position_name !== "Administrator"){
+            abort(403);
+        }
         $iduser = Auth::id();
         $salary = Salary::where('id',$id)->first();
         $user_level = Auth::user()->position_id;

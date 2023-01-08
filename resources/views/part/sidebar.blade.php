@@ -66,11 +66,13 @@
 											<span class="sub-item">Lihat Semua Pegawai</span>
 										</a>
 									</li>
-									<li>
+                                    @if (Auth::user()->positions->position_name == "Administrator")
+                                    <li>
 										<a href="/employee/create">
 											<span class="sub-item">Tambah Data Pegawai</span>
 										</a>
 									</li>
+                                    @endif
 								</ul>
 							</div>
 						</li>
@@ -87,11 +89,13 @@
 											<span class="sub-item">Lihat Divisi</span>
 										</a>
 									</li>
+                                    @if(Auth::user()->positions->position_name == "Administrator")
 									<li>
 										<a href="/division/create">
 											<span class="sub-item">Tambah Divisi</span>
 										</a>
 									</li>
+                                    @endif
 
 								</ul>
 							</div>
@@ -109,12 +113,13 @@
 											<span class="sub-item">Lihat Jabatan</span>
 										</a>
 									</li>
+                                    @if(Auth::user()->positions->position_name == "Administrator")
 									<li>
 										<a href="/position/create">
 											<span class="sub-item">Tambah Jabatan</span>
 										</a>
 									</li>
-
+                                    @endif
 								</ul>
 							</div>
 						</li>

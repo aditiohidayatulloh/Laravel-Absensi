@@ -39,6 +39,9 @@ class PositionController extends Controller
      */
     public function create()
     {
+        if (Auth::user()->positions->position_name !== "Administrator"){
+            abort(403);
+        }
         $iduser = Auth::id();
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
@@ -103,6 +106,9 @@ class PositionController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()->positions->position_name !== "Administrator"){
+            abort(403);
+        }
         $iduser = Auth::id();
         $position = Position::where('id',$id)->first();
         $user_level = Auth::user()->position_id;
