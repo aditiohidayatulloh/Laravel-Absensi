@@ -23,13 +23,11 @@ class PositionController extends Controller
     public function index()
     {
         $iduser = Auth::id();
-        $position = Position::all();
-        $division = Division::all();
+        $position = Position::with('division','salaries')->get();
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
-
-        return view('position.index',['position'=>$position,'profile'=>$profile,'user_position'=>$user_position]);
+        return view('position.index',compact('position','profile','user_position'));
     }
 
     /**
@@ -46,10 +44,10 @@ class PositionController extends Controller
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
-        $salary = Salary::all();
-        $division = Division::all();
+        $salary = Salary::get(['class','salary']);
+        $division = Division::get('division_name');
         // dd($salary);
-        return view('position.create',['profile'=>$profile,'user_position'=>$user_position,'salary'=>$salary,'division'=>$division]);
+        return view('position.create',compact('profile','user_position','salary','division'));
     }
 
     /**
@@ -93,9 +91,9 @@ class PositionController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
         $employee = User::where('position_id',$id)->get();
-        $salary = Salary::all();
+        $salary = Salary::get('salary');
 
-        return view('position.detail',['position'=>$position,'profile'=>$profile,'user_position'=>$user_position,'employee'=>$employee,'salary'=>$salary]);
+        return view('position.detail',compact('position','profile','user_position','employee','salary'));
     }
 
     /**
@@ -110,13 +108,14 @@ class PositionController extends Controller
             abort(403);
         }
         $iduser = Auth::id();
-        $position = Position::where('id',$id)->first();
+        $position = Position::find($id);
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
-        $division = Division::all();
-        $salary = Salary::all();
-        return view('position.edit',['position'=>$position,'profile'=>$profile,'user_position'=>$user_position,'salary'=>$salary,'division'=>$division]);
+        $divisions = Division::where('id','!=',$position->division_id)->get('division_name');
+        $salary = Salary::where('id', '!=', $position->salary_id)->get(['class','salary']);
+        // dd($salary);
+        return view('position.edit',compact('position','profile','user_position','divisions','salary'));
     }
 
     /**

@@ -28,8 +28,7 @@
 @endpush
 
 @section('content')
-    <h1 class="text-primary font-weight-bold mx-4 mt-4">Golongan {{ $salary->class }}</h1>
-    <h4 class="text-primary mx-4">Gaji - {{ $salary->salary }}</h4>
+    <h1 class="text-primary font-weight-bold mx-4 my-4">Golongan {{ $salary->class }} - Rp.{{ $salary->salary }}</h1>
 
     <div class="col-auto">
         <div class="card">
@@ -52,7 +51,7 @@
                                     <td>{{ $item->position_name }}</td>
                                     <td>
 
-                                        <button class="btn btn-info"><a href="/employee/{{ $item->id }}"
+                                        <button class="btn btn-info"><a href="/position/{{ $item->id }}"
                                                 style="text-decoration: none; color:white;">Detail</a></button>
 
                 </div>

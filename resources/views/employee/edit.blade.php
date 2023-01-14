@@ -35,7 +35,7 @@
         <div class="form-group mx-4 my-2">
             <label for="employee_code" class="text-md text-primary font-weight-bold">Posisi atau Jabatan</label>
             <select name="position" id="position" class="form-control">
-            <option value="">Pilih Jabatan</option>
+            <option value="{{ $employee->position_id }}">{{ $employee->positions->position_name }}</option>
             @foreach ($position as $item )
             <option value="{{ $item->id }}">{{ $item->position_name }}</option>
             @endforeach
@@ -50,9 +50,13 @@
         <div class="form-group mx-4 my-2">
             <label for="gender" class="text-md text-primary font-weight-bold">Jenis Kelamin</label>
             <select name="gender" id="gender" class="form-control @error('gender') is-invalid @enderror">
-                <option value="">Pilih Jenis Kelamin</option>
+                @if($employee->profile->gender == 'Laki-Laki')
                 <option value="Laki-Laki">Laki-Laki</option>
                 <option value="Perempuan">Perempuan</option>
+                @elseif ($employee->profile->gender == 'Perempuan')
+                <option value="Perempuan">Perempuan</option>
+                <option value="Laki-Laki">Laki-Laki</option>
+                @endif
             </select>
         </div>
 

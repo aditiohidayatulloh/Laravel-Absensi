@@ -37,7 +37,7 @@
         </div>
         <div class="card-body">
             <h4 class="text-secondary font-weight-bold">Divisi : {{ $position->division->division_name }}</h4>
-            <h4 class="text-secondary font-weight-bold">Gaji : <span class="text-dark">{{ $position->salaries->salary }}</span></h4>
+            <h4 class="text-secondary font-weight-bold">Gaji : {{ $position->salaries->salary }}</h4>
             <h4 class="text-secondary font-weight-bold">Deskripsi : </h4>
             @if ($position->description != null)
             <h5>{{ $position->description }}</h5>

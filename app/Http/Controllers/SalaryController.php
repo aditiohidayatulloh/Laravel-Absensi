@@ -25,7 +25,7 @@ class SalaryController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
 
-        return view('salary.index',['salary'=>$salary,'profile'=>$profile,'user_position'=>$user_position]);
+        return view('salary.index',compact('salary','profile','user_position'));
     }
 
     /**
@@ -44,7 +44,7 @@ class SalaryController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
 
-        return view('salary.create',['salary'=>$salary,'profile'=>$profile,'user_position'=>$user_position]);
+        return view('salary.create',compact('salary','profile','user_position'));
     }
 
     /**
@@ -82,9 +82,9 @@ class SalaryController extends Controller
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
-        $position_salary = Position::where('salary_id',$id)->get();
+        $position_salary = Position::where('salary_id',$id)->get(['id','position_name']);
 
-        return view('salary.detail',['salary'=>$salary,'profile'=>$profile,'user_position'=>$user_position,'position_salary'=>$position_salary]);
+        return view('salary.detail',compact('salary','profile','user_position','position_salary'));
     }
 
     /**
@@ -104,7 +104,7 @@ class SalaryController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
 
-        return view('salary.edit',['salary'=>$salary,'profile'=>$profile,'user_position'=>$user_position]);
+        return view('salary.edit',compact('salary','profile','user_position'));
     }
 
     /**

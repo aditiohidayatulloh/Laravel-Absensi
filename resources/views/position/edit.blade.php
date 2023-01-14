@@ -26,10 +26,14 @@
 
             <div class="form-group">
             <label for="employee_code" class="text-md text-primary font-weight-bold">Divisi</label>
-            <select name="division_id" id="division_id" class="form-control">
-            <option value="">Pilih Divisi</option>
-            @foreach ($division as $item )
-            <option value="{{ $item->id }}">{{ $item->division_name }}</option>
+            <select name="division_id" class="form-control">
+            <option value="{{ $position->division->id }}">
+                    {{ $position->division->division_name }}
+                </option>
+            @foreach ($divisions as $key)
+                <option value="{{ $key->id }}">
+                    {{ $key->division_name }}
+                </option>
             @endforeach
             </select>
         </div>
@@ -42,11 +46,14 @@
             <div class="form-group">
                 <label for="employee_code" class="text-md text-primary font-weight-bold">Posisi atau Jabatan</label>
                 <select name="salary_id" id="salary_id" class="form-control">
-                <option value="">Pilih Golongan Gaji</option>
-                @foreach ($salary as $item )
+                <option value="{{ $position->salaries->id }}">
+                   Golongan {{ $position ->salaries->class }} - {{ $position->salaries->salary }}
+                </option>
+                @forelse ($salary as $item)
                 <option value="{{ $item->id }}">Golongan {{ $item->class }} - {{ $item->salary }}</option>
-                @endforeach
+                @empty
                 <option value="">Tidak Ada Data</option>
+                @endforelse
                 </select>
             </div>
 

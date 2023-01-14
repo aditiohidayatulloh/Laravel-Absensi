@@ -39,8 +39,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/employeereport',[PDFController::class,'EmployeeReport']);
     Route::get('/salaryreport',[PDFController::class,'SalaryReport']);
     Route::get('/divisionreport',[PDFController::class,'DivisionReport']);
+    Route::get('/positionreport',[PDFController::class,'PositionReport']);
     Route::get('/schedulereport',[PDFController::class,'ScheduleReport']);
-
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 });
 

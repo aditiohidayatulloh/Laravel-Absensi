@@ -28,7 +28,7 @@
 @endpush
 
 @section('content')
-<h1 class="text-primary m-4">Daftar Pegawai</h1>
+<h1 class="text-primary font-weight-bold m-4">Daftar Pegawai</h1>
     @if(Auth::user()->positions->position_name == "Administrator" || Auth::user()->positions->position_name == "CEO" )
         <div class="mx-3 my-4">
         <a href="/employee/create" class="btn btn-info mt-3"> <i class="fa-solid fa-plus"></i> Tambah Data</a>

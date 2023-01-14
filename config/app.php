@@ -185,8 +185,12 @@ return [
         /*
          * Package Service Providers...
          */
+
+        // SweetAlert
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        // DomPDF
         Barryvdh\DomPDF\ServiceProvider::class,
+        // Laravel Excel
         /*
          * Application Service Providers...
          */
@@ -210,9 +214,11 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        // SweeAlert
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        // Laravel DomPDF
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        //Laravel Excel
     ])->toArray(),
 
 ];

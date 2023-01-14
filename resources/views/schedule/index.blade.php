@@ -47,7 +47,7 @@
                         <th scope="col">Hari</th>
                         <th scope="col">Shift</th>
                         <th scope="col">Jam Masuk</th>
-                        <th scope="col">Jam Keluar</th>
+                        <th scope="col">Jam Pulang</th>
                         <th scope="col">Tombol Aksi</th>
                     </tr>
                 </thead>

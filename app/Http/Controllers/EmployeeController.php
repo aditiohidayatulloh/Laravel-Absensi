@@ -24,12 +24,12 @@ class EmployeeController extends Controller
     public function index()
     {
         $iduser = Auth::id();
-        $employee = User::all();
-        $division = Division::all();
+        $employee = User::with('positions','profile')->get();
+        // $division = Division::get('division_name');
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
-        return view('employee.index',['employee'=>$employee,'profile'=>$profile,'user_position'=>$user_position]);
+        return view('employee.index',compact('employee','profile','user_position'));
     }
 
     /**
@@ -47,8 +47,8 @@ class EmployeeController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_level = Auth::user()->position_id;
         $user_position = Position::where('id',$user_level)->first();
-        $position = Position::all();
-        return view('employee.create',['profile'=>$profile,'user_position'=>$user_position,'position'=>$position]);
+        $position = Position::get('position_name');
+        return view('employee.create',compact('profile','user_position','position'));
     }
 
     /**
@@ -117,9 +117,9 @@ class EmployeeController extends Controller
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
-        $position = Position::all();
-        $division = Division::all();
-        return view('employee.detail',['profile'=>$profile,'user_position'=>$user_position,'position'=>$position,'employee'=>$employee]);
+        $position = Position::get('position_name');
+        $division = Division::get('division_name');
+        return view('employee.detail',compact('employee','profile','user_position','division'));
     }
 
     /**
@@ -137,8 +137,8 @@ class EmployeeController extends Controller
         $profile = Profile::where('users_id',$id)->first();
         $user_level = Auth::user()->position_id;
         $user_position = Position::where('id',$user_level)->first();
-        $position = Position::all();
-        return view('employee.edit',['employee'=>$employee,'profile'=>$profile,'user_position'=>$user_position,'position'=>$position]);
+        $position = Position::where('id','!=',$user_level)->get('position_name');
+        return view('employee.edit',compact('employee','profile','user_position','position'));
     }
 
     /**

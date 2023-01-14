@@ -10,7 +10,7 @@
 
 @section('content')
 
-    <h1 class="text-primary font-weight-bold m-4">Tambah Golongan Gaji</h1>
+    <h1 class="text-primary font-weight-bold m-4">Edit Golongan Gaji</h1>
 
     <div class="card mx-4 my-4 px-2">
 

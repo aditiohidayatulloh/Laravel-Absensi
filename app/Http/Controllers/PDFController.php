@@ -49,9 +49,7 @@ class PDFController extends Controller
     }
 
     public function PositionReport(Request $request){
-        $position = Position::all();
-        $division = Division::all();
-        $salary = Salary::all();
+        $position = Position::with('salaries','division')->get();
 
         $pdf = PDF::loadView('PDFReport.position_report',['position'=>$position]);
 

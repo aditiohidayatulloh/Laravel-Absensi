@@ -24,7 +24,7 @@ class DivisionController extends Controller
         $user_level = Auth::user()->position_id;
         $user_position = Position::where('id',$user_level)->first();
         $division = Division::all();
-        return view('division.index',['profile'=>$profile,'user_position'=>$user_position,'division'=>$division]);
+        return view('division.index',compact('profile','user_position','division'));
     }
 
     /**
@@ -41,7 +41,7 @@ class DivisionController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_level = Auth::user()->position_id;
         $user_position = Position::where('id',$user_level)->first();
-        return view('division.create',['profile'=>$profile,'user_position'=>$user_position]);
+        return view('division.create',compact('profile','user_position'));
     }
 
     /**
@@ -77,7 +77,7 @@ class DivisionController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_level = Auth::user()->position_id;
         $user_position = Position::where('id',$user_level)->first();
-        return view('division.detail',['profile'=>$profile,'user_position'=>$user_position,'division'=>$division,'position'=>$position]);
+        return view('division.detail',compact('profile','user_position','division','position'));
     }
 
     /**
@@ -96,7 +96,7 @@ class DivisionController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_level = Auth::user()->position_id;
         $user_position = Position::where('id',$user_level)->first();
-        return view('division.edit',['profile'=>$profile,'user_position'=>$user_position,'division'=>$division]);
+        return view('division.edit',compact('profile','user_position','division'));
     }
 
     /**

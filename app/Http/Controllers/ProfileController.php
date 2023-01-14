@@ -19,7 +19,7 @@ class ProfileController extends Controller
         $user_level = Auth::user()->position_id;
         $user_position = Position::where('id',$user_level)->first();
         // dd($user_position);
-        return view('profile.index',['profile'=>$profile,'user_position'=>$user_position]);
+        return view('profile.index',compact('profile','user_position'));
     }
 
     public function edit(){
@@ -27,7 +27,7 @@ class ProfileController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_level = Auth::user()->position_id;
         $user_position = Position::where('id',$user_level)->first();
-        return view('profile.edit',['profile'=>$profile,'user_position'=>$user_position]);
+        return view('profile.edit',compact('profile','user_position'));
     }
 
     public function update(request $request, $id){
@@ -40,7 +40,7 @@ class ProfileController extends Controller
             'address.required'=>"address tidak boleh kosong",
             'phone_number.required'=>"Nomor Telepon tidak boleh kosong",
             'profile_picture.mimes' =>"Foto Profile Harus Berupa jpg,jpeg,atau png",
-            'profile_picture.max' => "ukuran gambar tidak boleh lebih dari 2048 MB"
+            'profile_picture.max' => "ukuran gambar tidak boleh lebih dari 2048"
         ]);
         $iduser = Auth::id();
         $profile = Profile::where('users_id',$iduser)->first();

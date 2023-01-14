@@ -36,6 +36,6 @@ class HomeController extends Controller
         $employee_count = User::count();
         $position_count = Position::count();
         $division_count = Division::count();
-        return view('dashboard',['profile'=>$profile,'employee_count'=>$employee_count,'user_position'=>$user_position,'position_count'=>$position_count,'division_count'=>$division_count]);
+        return view('dashboard',compact('profile','user_position','employee_count','position_count','division_count'));
     }
 }

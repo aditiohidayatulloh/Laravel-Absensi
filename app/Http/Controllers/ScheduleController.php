@@ -25,7 +25,7 @@ class ScheduleController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
 
-        return view('schedule.index',['schedule'=>$schedule,'profile'=>$profile,'user_position'=>$user_position]);
+        return view('schedule.index',compact('schedule','profile','user_position'));
     }
 
     /**
@@ -44,7 +44,7 @@ class ScheduleController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
 
-        return view('schedule.create',['schedule'=>$schedule,'profile'=>$profile,'user_position'=>$user_position]);
+        return view('schedule.create',compact('schedule','profile','user_position'));
     }
 
     /**
@@ -89,7 +89,7 @@ class ScheduleController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
 
-        return view('schedule.detail',['schedule'=>$schedule,'profile'=>$profile,'user_position'=>$user_position]);
+        return view('schedule.detail',compact('schedule','profile','user_position'));
     }
 
     /**
@@ -105,11 +105,12 @@ class ScheduleController extends Controller
         }
         $iduser = Auth::id();
         $schedule = Schedule::find($id)->first();
+        $shifts = Schedule::get('shifts');
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
-
-        return view('schedule.edit',['schedule'=>$schedule,'profile'=>$profile,'user_position'=>$user_position]);
+        // dd($shifts);
+        return view('schedule.edit',compact('schedule','profile','user_position','shifts'));
     }
 
     /**
