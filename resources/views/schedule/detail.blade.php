@@ -46,9 +46,9 @@
     </div>
 
     <div class="col-lg-12">
-        <div class="card mb-4">
+        <div class="card my-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between ">
-                <h4 class="mx-2 my-0 text-primary font-weight-bold">Karyawan Dengan Posisi Ini :</h4>
+                <h4 class="mx-2 my-0 text-primary font-weight-bold">Karyawan Dengan Jadwal Ini :</h4>
             </div>
             <div class="table-responsive p-3">
                 <table class="table align-items-center table-flush table-hover" id="dataTableHover">
@@ -63,7 +63,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($employee as $key => $item)
+                        @forelse ($schedule->employee_schedules as $key => $item)
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td>{{ $item->name }}</td>

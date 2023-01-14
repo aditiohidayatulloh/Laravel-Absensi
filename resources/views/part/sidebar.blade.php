@@ -163,21 +163,29 @@
 							</a>
 							<div class="collapse" id="attendance">
 								<ul class="nav nav-collapse">
-									<li>
-										<a href="login.html">
-											<span class="sub-item">Absen Masuk</span>
+									@if (Auth::user()->positions->position_name == "Administrator")
+                                    <li>
+										<a href="/attendance">
+											<span class="sub-item">Daftar Hadir</span>
 										</a>
 									</li>
-									<li>
-										<a href="login2.html">
-											<span class="sub-item">Absen Keluar</span>
+                                    <li>
+										<a href="/attendance/create">
+											<span class="sub-item">Tambah Daftar Hadir</span>
 										</a>
 									</li>
-									<li>
-										<a href="userprofile.html">
-											<span class="sub-item">Riwayat Absensi</span>
+                                    <li>
+										<a href="/attendance/create">
+											<span class="sub-item">Riwayat Daftar Hadir</span>
 										</a>
 									</li>
+                                    @else
+                                    <li>
+										<a href="/attendance">
+											<span class="sub-item">Daftar Hadir</span>
+										</a>
+									</li>
+                                    @endif
 								</ul>
 							</div>
 						</li>

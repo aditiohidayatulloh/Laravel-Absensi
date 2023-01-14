@@ -8,6 +8,10 @@
     @include('part.navbar')
 @endsection
 
+@push('styles')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
+
 @section('content')
 <h1 class="text-primary mx-3 my-3">Form Edit Pegawai</h1>
 <div class="card pb-5 mx-3">
@@ -46,6 +50,22 @@
         @error('position')
         <div class="alert-danger mx-4 px-2 py-2"> {{ $message }}</div>
         @enderror
+
+        <div class="form-group mx-4">
+                    <label for="employee_schedules" class="text-primary font-weight-bold">Jadwal Kayrawan</label>
+                    <select class="form-control" name="employee_schedules[]" id="multiselect" multiple="multiple">
+                        @forelse ($schedule as $item)
+                            <option value="{{ $item->id }}">{{$item->day}} ({{ $item->shifts }})</option>
+                        @empty
+                            tidak ada
+                        @endforelse
+
+                    </select>
+                </div>
+
+                @error('employee_schedules')
+                <div class="alert-danger mx-4 my-2 px-2 py-2 mx-2"> {{ $message }}</div>
+                 @enderror
 
         <div class="form-group mx-4 my-2">
             <label for="gender" class="text-md text-primary font-weight-bold">Jenis Kelamin</label>
@@ -88,4 +108,9 @@
         </div>
     </form>
     </div>
+    <script>
+        $('#multiselect').select2({
+            allowClear: true
+        });
+    </script>
 @endsection

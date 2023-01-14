@@ -10,6 +10,7 @@ use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('division', DivisionController::class);
     Route::resource('salary', SalaryController::class);
     Route::resource('schedule', ScheduleController::class);
+    Route::resource('attendance', AttendanceController::class);
 
     Route::get('/employeereport',[PDFController::class,'EmployeeReport']);
     Route::get('/salaryreport',[PDFController::class,'SalaryReport']);

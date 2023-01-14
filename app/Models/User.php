@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Profile;
 use App\Models\Position;
+use App\Models\Schedule;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -52,4 +53,9 @@ class User extends Authenticatable
     public function positions(){
         return $this->belongsto(Position::class,'position_id');
     }
+    public function employee_schedules()
+    {
+        return $this->belongsToMany(Schedule::class, 'employee_schedules', 'employee_id', 'schedule_id');
+    }
+
 }

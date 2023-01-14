@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Profile;
 use App\Models\Position;
 use App\Models\Schedule;
@@ -84,12 +85,13 @@ class ScheduleController extends Controller
     public function show($id)
     {
         $iduser = Auth::id();
-        $schedule = Schedule::find($id)->first();
+        $schedule = Schedule::find($id);
         $user_level = Auth::user()->position_id;
         $profile = Profile::where('users_id',$iduser)->first();
         $user_position = Position::where('id',$user_level)->first();
+        $employee = User::all();
 
-        return view('schedule.detail',compact('schedule','profile','user_position'));
+        return view('schedule.detail',compact('schedule','profile','user_position','employee'));
     }
 
     /**

@@ -7,6 +7,7 @@ use App\Models\Profile;
 use App\Models\Division;
 use App\Models\Employee;
 use App\Models\Position;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -47,8 +48,9 @@ class EmployeeController extends Controller
         $profile = Profile::where('users_id',$iduser)->first();
         $user_level = Auth::user()->position_id;
         $user_position = Position::where('id',$user_level)->first();
-        $position = Position::get('position_name');
-        return view('employee.create',compact('profile','user_position','position'));
+        $position = Position::all();
+        $schedule = Schedule::all();
+        return view('employee.create',compact('profile','user_position','position','schedule'));
     }
 
     /**
@@ -68,7 +70,7 @@ class EmployeeController extends Controller
             'address'=> 'required',
             'phone_number'=> 'required',
             'email'=>'required|unique:users',
-            'password'=>'|min:8',
+            // 'password'=>'|min:8',
         ],
         [
             'name.required'=>"Nama tidak boleh kosong",
@@ -81,24 +83,41 @@ class EmployeeController extends Controller
             'phone_number.required'=>"Nomor Telepon tidak boleh kosong",
             'email.required'=>"Email tidak boleh kosong",
             'email.unique'=>"Email Telah Digunakan",
-            'password.min'=>"Password tidak boleh kurang dari 8 karakter"
+            // 'password.min'=>"Password tidak boleh kurang dari 8 karakter"
         ]);
-
         // dd($request->all());
-        $user = User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-            'position_id'=>$request['position']
-        ]);
-
-        Profile::create([
-            'employee_code'=>$request['employee_code'],
-            'gender'=>$request['gender'],
-            'address'=>$request['address'],
-            'phone_number'=>$request['phone_number'],
-            'users_id'=>$user->id,
-        ]);
+        if ($request->pasword == null){
+            $user = User::create([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'password' => Hash::make($request['employee_code']),
+                'position_id'=>$request['position']
+            ]);
+            $profile = Profile::create([
+                'employee_code'=>$request['employee_code'],
+                'gender'=>$request['gender'],
+                'address'=>$request['address'],
+                'phone_number'=>$request['phone_number'],
+                'users_id'=>$user->id,
+                ]);
+            $user->employee_schedules()->sync($request->employee_schedules);
+        }
+        else{
+            $user = User::create([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'password' => Hash::make($request['password']),
+                'position_id'=>$request['position']
+            ]);
+            $profile = Profile::create([
+                'employee_code'=>$request['employee_code'],
+                'gender'=>$request['gender'],
+                'address'=>$request['address'],
+                'phone_number'=>$request['phone_number'],
+                'users_id'=>$user->id,
+                ]);
+            $user->employee_schedules()->sync($request->employee_schedules);
+        }
 
         Alert::success('Success', 'Berhasil Menambah Karyawan');
         return redirect('/employee');
@@ -137,8 +156,9 @@ class EmployeeController extends Controller
         $profile = Profile::where('users_id',$id)->first();
         $user_level = Auth::user()->position_id;
         $user_position = Position::where('id',$user_level)->first();
-        $position = Position::where('id','!=',$user_level)->get('position_name');
-        return view('employee.edit',compact('employee','profile','user_position','position'));
+        $position = Position::where('id','!=',$user_level)->get();
+        $schedule = Schedule::all();
+        return view('employee.edit',compact('employee','profile','user_position','position','schedule'));
     }
 
     /**
@@ -180,6 +200,8 @@ class EmployeeController extends Controller
         $profile->gender = $request->gender;
         $profile->address = $request->address;
         $profile->phone_number = $request->phone_number;
+        $user->employee_schedules()->sync($request->employee_schedules);
+
 
         // dd($request->all());
         $profile->save();
