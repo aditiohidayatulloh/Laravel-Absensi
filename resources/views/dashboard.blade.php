@@ -80,7 +80,7 @@
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Karyawan yang hadir</p>
+                                <p class="card-category">Karyawan yang hadir hari ini</p>
                                 <h4 class="card-title">{{ $employee_attendance_count }}</h4>
                             </div>
                         </div>

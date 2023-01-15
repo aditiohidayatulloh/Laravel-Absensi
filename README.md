@@ -32,7 +32,7 @@
 
 
 
-# ERD Sistem Informasi Perpustakaan :
+# ERD Sistem Informasi Pegawai :
 <img src="/public/img/erd.png">
 
 # Link Youtube : 
