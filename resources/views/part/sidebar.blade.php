@@ -182,7 +182,7 @@
                                     @else
                                     <li>
 										<a href="/employeeattendance">
-											<span class="sub-item">Daftar Hadir</span>
+											<span class="sub-item">Isi Daftar Hadir</span>
 										</a>
 										<a href="/employeeattendance/report">
 											<span class="sub-item">Riwayat Daftar Hadir</span>

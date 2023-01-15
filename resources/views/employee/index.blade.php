@@ -33,10 +33,8 @@
         <div class="mx-3 my-4">
         <a href="/employee/create" class="btn btn-info mt-3"> <i class="fa-solid fa-plus"></i> Tambah Data</a>
         <a href="/employeereport" class="btn btn-danger mt-3"><i class="fa-solid fa-print"> </i> Export PDF</a>
-        <a href="/employeereport" class="btn btn-success mt-3"><i class="fa-solid fa-file-excel"> </i> Export Excel</a>
     </div>
     @endif
-
 
     <div class="col-lg-12">
         <div class="card mb-4">
