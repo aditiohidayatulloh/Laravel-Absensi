@@ -14,7 +14,6 @@
 <li>Pengelolaan Data Gaji Karyawan.</li>
 <li>Pengelolaan Data Jadwal Karyawan.</li>
 <li>Pengelolaan Data Absensi Karyawan.</li>
-<li>Pengelolaan Cuti dan Hari Libur Karyawan.</li>
 <li>Export Data ke PDF</li>
 </ol>
 
@@ -36,6 +35,8 @@
 <img src="/public/img/erd.png">
 
 # Link Youtube : 
+https://youtu.be/nYgV8nktgs0
+
 
 </ul>
 
