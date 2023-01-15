@@ -8,7 +8,9 @@ use App\Models\Salary;
 use App\Models\Division;
 use App\Models\Position;
 use App\Models\Schedule;
+use App\Models\Attendance;
 use Illuminate\Http\Request;
+use App\Models\EmployeeAttendance;
 use App\Http\Controllers\Controller;
 
 class PDFController extends Controller
@@ -64,6 +66,16 @@ class PDFController extends Controller
 
         // return $pdf->download('Schedule_report.pdf');
         return $pdf->stream('schedule_report.pdf');
+    }
+
+    public function AttendanceReportDay($id){
+        $attendance = Attendance::find($id);
+        $attendance_report = EmployeeAttendance::where('attendance_id',$id)->with('user','attendance')->get();
+
+        $pdf = PDF::loadView('PDFReport.attendance_report_day',['attendance'=>$attendance,'attendance_report'=>$attendance_report]);
+
+        // return $pdf->download('Schedule_report.pdf');
+        return $pdf->stream('attendance__report_day.pdf');
     }
 
 }

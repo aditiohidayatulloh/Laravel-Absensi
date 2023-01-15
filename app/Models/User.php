@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Models\Profile;
 use App\Models\Position;
 use App\Models\Schedule;
+use App\Models\Attendance;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -56,6 +57,11 @@ class User extends Authenticatable
     public function employee_schedules()
     {
         return $this->belongsToMany(Schedule::class, 'employee_schedules', 'employee_id', 'schedule_id');
+    }
+
+    public function employee_attendance():BelongsToMany
+    {
+        return $this->belongsToMany(Attendance::class, 'employee_attendance', 'users_id', 'attendance_id');
     }
 
 }

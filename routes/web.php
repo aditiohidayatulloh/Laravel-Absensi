@@ -11,6 +11,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\EmployeeAttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,13 +38,19 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('salary', SalaryController::class);
     Route::resource('schedule', ScheduleController::class);
     Route::resource('attendance', AttendanceController::class);
+    Route::get('/employeeattendance',[EmployeeAttendanceController::class,'index']);
+    Route::post('/employeeattendance',[EmployeeAttendanceController::class,'store']);
+    Route::get('/employeeattendance/create',[EmployeeAttendanceController::class,'create']);
+    Route::get('/employeeattendance/{employeeattendance}/edit',[EmployeeAttendanceController::class,'edit']);
+    Route::put('/employeeattendance/{employeeattendance}',[EmployeeAttendanceController::class,'update']);
+    Route::get('/employeeattendance/report',[EmployeeAttendanceController::class,'attendanceReport']);
 
     Route::get('/employeereport',[PDFController::class,'EmployeeReport']);
     Route::get('/salaryreport',[PDFController::class,'SalaryReport']);
     Route::get('/divisionreport',[PDFController::class,'DivisionReport']);
     Route::get('/positionreport',[PDFController::class,'PositionReport']);
     Route::get('/schedulereport',[PDFController::class,'ScheduleReport']);
+    Route::get('/attendacereportday/{attendance}',[PDFController::class,'AttendanceReportDay']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 });
 

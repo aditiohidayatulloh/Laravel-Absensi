@@ -80,8 +80,8 @@
                         </div>
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
-                                <p class="card-category">Order</p>
-                                <h4 class="card-title">576</h4>
+                                <p class="card-category">Karyawan yang hadir</p>
+                                <h4 class="card-title">{{ $employee_attendance_count }}</h4>
                             </div>
                         </div>
                     </div>
