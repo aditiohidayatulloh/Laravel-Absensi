@@ -15,7 +15,7 @@
 <li>Pengelolaan Data Jadwal Karyawan.</li>
 <li>Pengelolaan Data Absensi Karyawan.</li>
 <li>Pengelolaan Cuti dan Hari Libur Karyawan.</li>
-<li>Export Data Absensi ke PDF</li>
+<li>Export Data ke PDF</li>
 </ol>
 
 # Library yang digunakan :
