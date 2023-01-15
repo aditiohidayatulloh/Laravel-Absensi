@@ -21,7 +21,7 @@
 # Library yang digunakan :
 <ul>
 <li>Laravel UI</li>
-<li>Bootstrap 4</li>
+<li>Bootstrap 5</li>
 <li>FontAwesome</li>
 <li>realrashid/sweet-alert</li>
 <li>Template Azzara</li>

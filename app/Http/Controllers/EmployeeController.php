@@ -134,7 +134,7 @@ class EmployeeController extends Controller
         $iduser = Auth::id();
         $employee = User::find($id);
         $user_level = Auth::user()->position_id;
-        $profile = Profile::where('users_id',$iduser)->first();
+        $profile = Profile::where('users_id',$id)->first();
         $user_position = Position::where('id',$user_level)->first();
         $position = Position::get('position_name');
         $division = Division::get('division_name');
