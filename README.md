@@ -4,17 +4,6 @@
 <h4>A2-2113201044</h4>
 <h4>Teknik Informatika Universitas Sangga Buana YPKP</h4>
 
-# Library yang digunakan :
-<ul>
-<li>Laravel UI</li>
-<li>Bootstrap 4</li>
-<li>FontAwesome</li>
-<li>realrashid/sweet-alert</li>
-<li>Template Azzara</li>
-<li>DataTables</li>
-<li>Select2</li>
-<li>DomPDF</li>
-</ul>
 
 # Fitur Requirements :
 <ol>
@@ -28,6 +17,20 @@
 <li>Pengelolaan Cuti dan Hari Libur Karyawan.</li>
 <li>Export Data Absensi ke PDF</li>
 </ol>
+
+# Library yang digunakan :
+<ul>
+<li>Laravel UI</li>
+<li>Bootstrap 4</li>
+<li>FontAwesome</li>
+<li>realrashid/sweet-alert</li>
+<li>Template Azzara</li>
+<li>DataTables</li>
+<li>Select2</li>
+<li>DomPDF</li>
+</ul>
+
+
 
 # ERD Sistem Informasi Perpustakaan :
 <img src="/public/img/erd.png">
